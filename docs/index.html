@@ -8,6 +8,7 @@
   <title>Deckhand — Windows file organiser</title>
   <link rel="icon" href="deckhand-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
+  <script src="screenshots.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -17,6 +18,7 @@
       <a href="#features">Features</a>
       <a href="#screenshots">Screenshots</a>
       <a href="#setup">Setup</a>
+      <a href="#about">About</a>
       <a href="https://github.com/AuZzii-Xssistant/Deckhand">GitHub</a>
     </nav>
   </header>
@@ -24,7 +26,7 @@
     <section class="wrap hero" aria-labelledby="intro">
       <div class="intro">
         <p class="eyebrow">FILE ORGANISER FOR WINDOWS</p>
-        <h1 id="intro">Organise files with folder rules.</h1>
+        <h1 id="intro">Put your files to work.</h1>
         <p class="lede">Give Deckhand a folder and a rule. Preview how your files will move, then run it once or let Deckhand watch for new arrivals.</p>
         <div class="buttons">
           <a class="button" href="https://github.com/AuZzii-Xssistant/Deckhand/releases/latest">Download for Windows</a>
@@ -47,7 +49,7 @@
     </section>
     <section class="wrap section" id="screenshots">
       <h2>Inside Deckhand</h2>
-      <p class="muted">Screenshots show sample data. Select one to see it at full size.</p>
+      <p class="muted">Screenshots show sample data. Select one to enlarge it.</p>
       <div class="gallery">
         <figure><a href="screenshots/rules.png"><img loading="lazy" src="screenshots/rules.png" alt="Rules grouped in a list with watching controls"></a><figcaption>Rules</figcaption></figure>
         <figure><a href="screenshots/presets.png"><img loading="lazy" src="screenshots/presets.png" alt="Preset library with repeatable folder jobs"></a><figcaption>Presets</figcaption></figure>
@@ -72,11 +74,22 @@
         </aside>
       </div>
     </section>
+    <section class="wrap section" id="about">
+      <h2>Why Deckhand?</h2>
+      <p class="about-copy">On a ship, the deckhand is the crew member who does the actual handling: moving cargo, stowing gear and keeping the deck in order so the vessel runs. Your PC is the ship, your files are the cargo, and Deckhand is the crew member that sorts, moves, names and tidies it, the same way every time, while you steer.</p>
+    </section>
   </main>
+  <dialog id="screenshot-viewer" aria-labelledby="screenshot-title">
+    <div class="viewer-heading">
+      <h2 id="screenshot-title"></h2>
+      <form method="dialog"><button type="submit" autofocus>Close</button></form>
+    </div>
+    <img alt="">
+  </dialog>
   <footer class="wrap bottom">
     <p>Deckhand · Free for personal and commercial use</p>
     <a href="https://github.com/AuZzii-Xssistant/Deckhand/blob/main/LICENSE">Licence</a>
-    <a href="https://github.com/AuZzii-Xssistant/Deckhand/issues">Feedback</a>
+    <a href="https://github.com/AuZzii-Xssistant/Deckhand/issues/new/choose">Feedback</a>
   </footer>
 </body>
 </html>

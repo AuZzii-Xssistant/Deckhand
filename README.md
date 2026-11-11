@@ -4,17 +4,21 @@
 
 <h1 align="center">Deckhand</h1>
 
-<p align="center">A Windows file organiser for the folders you keep sorting by hand.</p>
+<p align="center"><strong>Put your files to work.</strong></p>
 
 <p align="center">
   <a href="https://auzzii-xssistant.github.io/Deckhand/">Website</a> ·
   <a href="https://github.com/AuZzii-Xssistant/Deckhand/releases/latest">Download for Windows</a> ·
-  <a href="https://github.com/AuZzii-Xssistant/Deckhand/issues">Report an issue</a>
+  <a href="https://github.com/AuZzii-Xssistant/Deckhand/issues/new/choose">Report an issue</a>
 </p>
 
 ![Deckhand Home showing active rules, file counts, and recent runs](docs/screenshots/home.png)
 
 Deckhand watches folders and applies rules you define. Sort Downloads, rename invoices using their contents, or file photos by date. Preview the changes before a manual run, then use History to review the result and undo supported actions.
+
+## Why Deckhand?
+
+On a ship, the deckhand is the crew member who does the actual handling: moving cargo, stowing gear and keeping the deck in order so the vessel runs. Your PC is the ship, your files are the cargo, and Deckhand is the crew member that sorts, moves, names and tidies it, the same way every time, while you steer.
 
 ## Get started
 
@@ -45,6 +49,6 @@ The screenshots use sample data. The appearance may vary by release.
 
 ## Support and licence
 
-For bug reports, include your Deckhand version, the Windows version, what you expected, and what happened. Remove personal file paths or names from any screenshots you attach. [Open an issue](https://github.com/AuZzii-Xssistant/Deckhand/issues)
+Use the bug report or feature request form. Remove personal file paths or names from any screenshots you attach. [Open an issue](https://github.com/AuZzii-Xssistant/Deckhand/issues/new/choose)
 
 This public repository hosts Deckhand's compiled releases, screenshots, and documentation. The application source is private. Deckhand is free for personal and commercial use under the [Deckhand licence](LICENSE).

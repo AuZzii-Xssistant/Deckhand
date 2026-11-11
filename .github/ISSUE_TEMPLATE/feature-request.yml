@@ -1,0 +1,23 @@
+name: Feature request
+description: Suggest an improvement to Deckhand.
+title: "[Feature] "
+body:
+  - type: textarea
+    id: workflow
+    attributes:
+      label: What are you trying to do?
+      description: Describe the file organisation task and where you get stuck.
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: What should Deckhand do?
+      description: Describe the behaviour you would like. An example rule or folder layout is welcome.
+    validations:
+      required: true
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Current workaround or examples
+      description: Optional. Remove personal details from examples and screenshots.

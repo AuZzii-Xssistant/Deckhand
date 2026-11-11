@@ -1,0 +1,52 @@
+name: Bug report
+description: Report a problem you can reproduce in Deckhand.
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This issue is public. Remove personal paths, file names, and sensitive details from logs and screenshots.
+  - type: input
+    id: deckhand
+    attributes:
+      label: Deckhand version
+      description: Find it in Deckhand under Settings → About.
+      placeholder: "0.9.28"
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      placeholder: "Windows 11 24H2"
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Include the relevant rule, action, or setting. Use example file paths where possible.
+      placeholder: |
+        1. Open…
+        2. Choose…
+        3. Run…
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead?
+      description: Include the exact error message if you saw one.
+    validations:
+      required: true
+  - type: textarea
+    id: attachments
+    attributes:
+      label: Screenshots or logs
+      description: Optional. Attach a redacted screenshot or paste a short excerpt.

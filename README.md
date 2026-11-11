@@ -1,90 +1,50 @@
-<p align="center"><img src="assets/logo/deckhand-logo.svg" width="128" alt="Deckhand logo"></p>
+<p align="center">
+  <img src="assets/logo/deckhand-logo.svg" width="96" alt="Deckhand">
+</p>
 
-# Deckhand
+<h1 align="center">Deckhand</h1>
 
-**Put your files to work.**
+<p align="center">A Windows file organiser for the folders you keep sorting by hand.</p>
 
-Deckhand is a rule-based file organiser for Windows. Say which files, say what to do, preview exactly what would happen, run it, undo it. One portable exe: no installer, no admin rights, no account and no telemetry. Everything stays on your PC.
+<p align="center">
+  <a href="https://auzzii-xssistant.github.io/Deckhand/">Website</a> ·
+  <a href="https://github.com/AuZzii-Xssistant/Deckhand/releases/latest">Download for Windows</a> ·
+  <a href="https://github.com/AuZzii-Xssistant/Deckhand/issues">Report an issue</a>
+</p>
 
-> **Beta.** Deckhand is under active development. Try new rules on copies of your folders first, always preview before you run, and please report anything odd as an issue.
+![Deckhand Home showing active rules, file counts, and recent runs](docs/screenshots/home.png)
 
-## Why "Deckhand"?
+Deckhand watches folders and applies rules you define. Sort Downloads, rename invoices using their contents, or file photos by date. Preview the changes before a manual run, then use History to review the result and undo supported actions.
 
-On a ship, the deckhand is the crew member who does the actual handling: moving cargo, stowing gear and keeping the deck in order so the vessel runs. Your PC is the ship, your files are the cargo, and Deckhand is the crew member that sorts, moves, names and tidies it, the same way every time, while you steer.
+## Get started
 
-## Download
+1. Use **64-bit Windows 10 or 11** with the **Microsoft Edge WebView2 Runtime**. If the runtime is missing, install the [WebView2 Evergreen Runtime from Microsoft](https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section).
+2. Download **Deckhand.exe** from [GitHub Releases](https://github.com/AuZzii-Xssistant/Deckhand/releases/latest). The release also provides a SHA-256 checksum.
+3. Run the executable from a folder you intend to keep. Deckhand ships as a standalone executable. Start with a test folder, preview a rule, and check the proposed destinations before running it.
 
-Get **Deckhand.exe** from the [latest release](../../releases/latest) and run it. There is nothing to install.
+> **Unsigned Windows executable.** Deckhand is currently distributed without a code-signing signature. Windows SmartScreen may show an unknown-publisher or unrecognised-app warning. Verify the download against the release checksum before deciding whether to run it.
 
-- Windows 10 or 11 (64-bit) with the Microsoft WebView2 runtime, which is already present on Windows 11 and on any PC with Edge or Microsoft 365.
-- The exe is not code-signed yet, so Windows SmartScreen may show a warning the first time: choose *More info*, then *Run anyway*.
-- Rules, history and settings live in a `data` folder next to the exe (or in `%APPDATA%\Deckhand` if that folder is read-only). `--data <folder>` overrides it.
+Deckhand is in beta. Keep backups of important files, especially before trying rules that delete or overwrite.
+
+## What you can do
+
+- **Watch and schedule.** Run rules in the background, on a schedule, or manually. Use presets for repeatable jobs on folders you choose.
+- **Match and organise.** Filter by name, type, dates, metadata, or file contents. Move, copy, rename, sort, archive, and extract files.
+- **Review and recover.** Preview proposed actions, inspect the History and log after a run, and undo actions that Deckhand can reverse.
+- **Reuse your setup.** Export rules and presets or back up your library. Deckhand also offers an optional Explorer right-click menu and command-line controls.
 
 ## Screenshots
 
-Sample data, nautical skin on, dark theme (the numbers are made up).
+The screenshots use sample data. The appearance may vary by release.
 
-| | |
-|---|---|
-| ![Home](docs/screenshots/home.png) **Home**: rules, recent runs, lifetime counts | ![Rules](docs/screenshots/rules.png) **Rules**: a sortable table with run numbers, switches and a ... menu |
-| ![Presets](docs/screenshots/presets.png) **Presets**: run a saved tidy-up on any folder | ![Schedules](docs/screenshots/schedules.png) **Schedules**: the next seven days and every scheduled run, with Run now |
-| ![History](docs/screenshots/history.png) **History**: every run, with undo | |
+| Rules | Presets |
+| --- | --- |
+| [![Rules list with groups and watching controls](docs/screenshots/rules.png)](docs/screenshots/rules.png) | [![Presets for repeatable folder jobs](docs/screenshots/presets.png)](docs/screenshots/presets.png) |
+| **Schedules** | **History** |
+| [![Schedules with upcoming and recent runs](docs/screenshots/schedules.png)](docs/screenshots/schedules.png) | [![History showing file operations and undo controls](docs/screenshots/history.png)](docs/screenshots/history.png) |
 
-## Features
+## Support and licence
 
-#### Safety
+For bug reports, include your Deckhand version, the Windows version, what you expected, and what happened. Remove personal file paths or names from any screenshots you attach. [Open an issue](https://github.com/AuZzii-Xssistant/Deckhand/issues)
 
-- **Preview, run, undo**: Every rule can be previewed first. The preview and the real run use the same code, a run re-checks every file, and moves, renames, copies and extractions can be undone from History.
-- **Nothing is lost by accident**: A step that is skipped or fails stops any later delete for that file, duplicates always keep one copy, overwritten files go to the Recycle Bin, and read-only, system, hidden and in-progress files are left alone by default.
-- **Optical character recognition is opt-in**: Reading text from pictures and scans is off by default, every result that used it is marked, and a file is never deleted, recycled or overwritten because of recognised text unless you approve that file.
-
-#### Rules
-
-- **Folders and conditions**: Watch one or more folders (optionally with subfolders) and test files with nested all / any / none groups on text, numbers, dates, file types, duplicates, hashes and file contents.
-- **Variables**: File name, path and dates, PDF properties, audio tags, image metadata, text from PDF, Word, Excel, PowerPoint, OpenDocument and plain files, plus your own word lists, dictionaries, patterns, regular expressions and dates found in text.
-- **Templates with transforms**: Names and folders accept {variables} with fallbacks, upper / lower / title case, replace, slug, padding, substring and date arithmetic.
-- **Files without a value**: A rename, move, copy, sort or zip can skip a file that lacks a value, use a fallback or fail; skipped files are reported, not treated as errors.
-
-#### Actions
-
-- **File actions**: Move, copy, rename, change extension, sort into subfolders (by type, extension or date), zip, extract, Recycle Bin, delete, write to a log and show a notification.
-- **Archives**: Extract zip, tar, 7z and rar, including multi-part sets, waiting until every part has arrived.
-- **Run a command or a saved script**: Command Prompt, Windows PowerShell, PowerShell 7 or another interpreter, with a time limit; scripts can be saved, reused and shared with rules.
-
-#### File types
-
-- **File type catalogue**: About 940 extensions grouped as Category and Subtype, with friendly groups such as Audio, Document and Image. Add, move or hide extensions on the File types page; changes apply everywhere at once.
-
-#### Automation
-
-- **Rules that run by themselves**: Rules watch their folders in the background, remember what they handled, retry files that are in use and show their status; they can also run on a schedule.
-- **Presets**: Saved tidy-ups that are not tied to a folder: pick one, choose a folder, preview and run. A plain-language explanation shows what each preset does.
-- **Command line**: Run a preset or rule from a script or Task Scheduler with --run-preset or --run-rule; a real run needs --yes, output can be JSON and exit codes are documented.
-- **Explorer right-click menu**: Optional menu entries for the current user, no administrator rights needed.
-
-#### Everyday use
-
-- **History and log**: Every run with details and undo, and a searchable log of what happened to each file.
-- **Import and export**: Rules, presets, variables and scripts can be exported and imported; rules from other organisers' configuration files can be imported (they arrive switched off) with warnings for anything that could not be converted.
-- **Backup and restore**: Back up the whole library and settings and restore them later; the files being replaced are kept.
-- **Tray, start with Windows, notifications**: Keeps working from the system tray, can start with Windows for the current user, and uses native notifications.
-- **Light and dark themes**: Follows Windows or set by hand; compact layout with keyboard shortcuts and a command palette.
-
-## Safe by design
-
-- Every rule can be previewed first; the preview and the real run use the same code.
-- A skipped or failed step stops any later delete for that file; duplicates always keep one copy.
-- Files that are still being downloaded or copied are left alone until they stop changing.
-- Moves, renames, copies and extractions can be undone from History.
-
-## Feedback
-
-Found a bug or want something added? Open an issue and include what you expected, what happened and, if you can, a screenshot.
-
-## Source code
-
-Deckhand is closed source for now. The source code may be released at a later stage, once the beta has settled; watch this repository for news.
-
-## Licence
-
-Deckhand is free to use for personal and commercial purposes. See [LICENSE](LICENSE) for the exact terms.
+This public repository hosts Deckhand's compiled releases, screenshots, and documentation. The application source is private. Deckhand is free for personal and commercial use under the [Deckhand licence](LICENSE).

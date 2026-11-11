@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Deckhand is a Windows file organiser with folder rules, previews, schedules, and run history.">
+  <meta name="theme-color" content="#0a1824">
+  <title>Deckhand — Windows file organiser</title>
+  <link rel="icon" href="deckhand-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="wrap top">
+    <a class="brand" href="./"><img src="deckhand-mark.svg" alt="" width="36" height="36">Deckhand</a>
+    <nav aria-label="Main navigation">
+      <a href="#features">Features</a>
+      <a href="#screenshots">Screenshots</a>
+      <a href="#setup">Setup</a>
+      <a href="https://github.com/AuZzii-Xssistant/Deckhand">GitHub</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="wrap hero" aria-labelledby="intro">
+      <div class="intro">
+        <p class="eyebrow">FILE ORGANISER FOR WINDOWS</p>
+        <h1 id="intro">Organise files with folder rules.</h1>
+        <p class="lede">Give Deckhand a folder and a rule. Preview how your files will move, then run it once or let Deckhand watch for new arrivals.</p>
+        <div class="buttons">
+          <a class="button" href="https://github.com/AuZzii-Xssistant/Deckhand/releases/latest">Download for Windows</a>
+          <a class="subtle" href="#setup">Requirements and setup</a>
+        </div>
+        <p class="muted">Windows 10 or 11 · 64-bit · Free beta</p>
+      </div>
+      <figure class="hero-shot">
+        <a href="screenshots/home.png"><img src="screenshots/home.png" width="1280" height="800" alt="Deckhand Home with rules watching folders and a list of recent runs"></a>
+        <figcaption>Home shows what’s running, what needs attention, and what changed.</figcaption>
+      </figure>
+    </section>
+    <section class="wrap section" id="features">
+      <h2>From a rule to a tidy folder</h2>
+      <div class="features">
+        <article><h3>Choose what matches</h3><p>Use file names, types, dates, metadata, or contents to pick the files a rule should handle.</p></article>
+        <article><h3>Decide what happens</h3><p>Move, copy, rename, sort, zip, or extract files. Preview the plan before a manual run.</p></article>
+        <article><h3>Run it your way</h3><p>Run a preset on a folder, watch for new files, or set a schedule. Review results and undo supported actions in History.</p></article>
+      </div>
+    </section>
+    <section class="wrap section" id="screenshots">
+      <h2>Inside Deckhand</h2>
+      <p class="muted">Screenshots show sample data. Select one to see it at full size.</p>
+      <div class="gallery">
+        <figure><a href="screenshots/rules.png"><img loading="lazy" src="screenshots/rules.png" alt="Rules grouped in a list with watching controls"></a><figcaption>Rules</figcaption></figure>
+        <figure><a href="screenshots/presets.png"><img loading="lazy" src="screenshots/presets.png" alt="Preset library with repeatable folder jobs"></a><figcaption>Presets</figcaption></figure>
+        <figure><a href="screenshots/schedules.png"><img loading="lazy" src="screenshots/schedules.png" alt="Schedules showing upcoming and recent runs"></a><figcaption>Schedules</figcaption></figure>
+        <figure><a href="screenshots/history.png"><img loading="lazy" src="screenshots/history.png" alt="History showing completed file operations"></a><figcaption>History</figcaption></figure>
+      </div>
+    </section>
+    <section class="wrap section" id="setup">
+      <div class="setup">
+        <div>
+          <h2>Get started on Windows</h2>
+          <ol>
+            <li>Use 64-bit Windows 10 or 11 with the <a href="https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section">Microsoft Edge WebView2 Runtime</a>. Install the Evergreen Runtime if it is missing.</li>
+            <li>Download <strong>Deckhand.exe</strong> from <a href="https://github.com/AuZzii-Xssistant/Deckhand/releases/latest">GitHub Releases</a> and compare it with the published SHA-256 checksum.</li>
+            <li>Open Deckhand and preview a rule on a test folder. Review the destinations before you run it.</li>
+          </ol>
+        </div>
+        <aside>
+          <h3>Unsigned Windows executable</h3>
+          <p>Deckhand currently ships without a code-signing signature. Windows SmartScreen may show an unknown-publisher or unrecognised-app warning.</p>
+          <p>Deckhand is in beta. Keep backups before testing rules that delete or overwrite.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap bottom">
+    <p>Deckhand · Free for personal and commercial use</p>
+    <a href="https://github.com/AuZzii-Xssistant/Deckhand/blob/main/LICENSE">Licence</a>
+    <a href="https://github.com/AuZzii-Xssistant/Deckhand/issues">Feedback</a>
+  </footer>
+</body>
+</html>

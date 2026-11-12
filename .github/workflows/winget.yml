@@ -35,17 +35,17 @@ jobs:
           $asset = $release.assets | Where-Object name -ceq 'Deckhand.exe'
           if (!$asset -or $asset.state -ne 'uploaded') { throw 'The release must contain Deckhand.exe.' }
 
-          $path = 'manifests/x/Xssistant/Deckhand'
-          $catalog = gh api "repos/microsoft/winget-pkgs/contents/$path" 2>$null
-          if ($LASTEXITCODE) { throw 'The initial WinGet package must merge before automatic updates can run. Retry this workflow after it merges.' }
-          $versions = $catalog | ConvertFrom-Json
-          if ($versions.name -contains $version) { Write-Host "WinGet already contains $version."; return }
-
           $query = 'repo:microsoft/winget-pkgs is:pr is:open in:title Xssistant.Deckhand'
           $pulls = gh api -X GET search/issues -f "q=$query" | ConvertFrom-Json
           if ($LASTEXITCODE) { throw 'Could not check for duplicate WinGet pull requests.' }
           $existing = $pulls.items | Where-Object { $_.title -match "(?<![\d.])$([regex]::Escape($version))(?![\d.])" }
           if ($existing) { Write-Host ($existing.html_url -join ', '); return }
+
+          $path = 'manifests/x/Xssistant/Deckhand'
+          $catalog = gh api "repos/microsoft/winget-pkgs/contents/$path" 2>$null
+          if ($LASTEXITCODE) { throw 'Could not read the WinGet catalog entry. If the initial pull request is still open, retry after it merges.' }
+          $versions = $catalog | ConvertFrom-Json
+          if ($versions.name -contains $version) { Write-Host "WinGet already contains $version."; return }
 
           if (!$env:WINGET_CREATE_GITHUB_TOKEN) { throw 'Set the DECKHAND_WINGET_TOKEN repository secret before submitting updates.' }
           $tool = Join-Path $env:RUNNER_TEMP 'wingetcreate.exe'

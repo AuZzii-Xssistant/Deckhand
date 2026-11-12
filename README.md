@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="https://auzzii-xssistant.github.io/Deckhand/">Website</a> ·
-  <a href="https://github.com/AuZzii-Xssistant/Deckhand/releases/latest">Download for Windows</a> ·
+  <a href="https://github.com/AuZzii-Xssistant/Deckhand/releases/latest">Download from GitHub</a> ·
   <a href="https://github.com/AuZzii-Xssistant/Deckhand/issues/new/choose">Report an issue</a>
 </p>
 
@@ -21,6 +21,8 @@ Deckhand watches folders and applies rules you define. Sort Downloads, rename in
 On a ship, the deckhand is the crew member who does the actual handling: moving cargo, stowing gear and keeping the deck in order so the vessel runs. Your PC is the ship, your files are the cargo, and Deckhand is the crew member that sorts, moves, names and tidies it, the same way every time, while you steer.
 
 ## Get started
+
+**Microsoft Store:** The first release is in certification. You can download Deckhand from GitHub now.
 
 1. Use **64-bit Windows 10 or 11** with the **Microsoft Edge WebView2 Runtime**. If the runtime is missing, install the [WebView2 Evergreen Runtime from Microsoft](https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section).
 2. Download **Deckhand.exe** from [GitHub Releases](https://github.com/AuZzii-Xssistant/Deckhand/releases/latest). The release also provides a SHA-256 checksum.

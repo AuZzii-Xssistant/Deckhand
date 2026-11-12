@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="https://auzzii-xssistant.github.io/Deckhand/">Website</a> ·
-  <a href="https://github.com/AuZzii-Xssistant/Deckhand/releases/latest">Download from GitHub</a> ·
+  <a href="https://github.com/AuZzii-Xssistant/Deckhand/releases/latest/download/Deckhand.exe">Download from GitHub</a> ·
   <a href="https://github.com/AuZzii-Xssistant/Deckhand/issues/new/choose">Report an issue</a>
 </p>
 

@@ -1,0 +1,54 @@
+name: Submit Deckhand to WinGet
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Published Deckhand tag, such as v0.9.30
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deckhand-winget-${{ github.event.release.tag_name || inputs.tag }}
+  cancel-in-progress: false
+
+jobs:
+  submit:
+    if: github.event_name != 'release' || !github.event.release.prerelease
+    runs-on: windows-2022
+    steps:
+      - name: Check release and submit manifest
+        env:
+          GH_TOKEN: ${{ github.token }}
+          WINGET_CREATE_GITHUB_TOKEN: ${{ secrets.DECKHAND_WINGET_TOKEN }}
+          DECKHAND_TAG: ${{ github.event.release.tag_name || inputs.tag }}
+        run: |
+          $tag = $env:DECKHAND_TAG
+          if ($tag -cnotmatch '^v[0-9]+\.[0-9]+\.[0-9]+$') { throw 'Use a stable version tag such as v0.9.30.' }
+          $version = $tag.Substring(1)
+          $release = gh api "repos/$env:GITHUB_REPOSITORY/releases/tags/$tag" | ConvertFrom-Json
+          if ($LASTEXITCODE -or !$release -or $release.draft -or $release.prerelease) { throw 'A published stable GitHub release is required.' }
+          $asset = $release.assets | Where-Object name -ceq 'Deckhand.exe'
+          if (!$asset -or $asset.state -ne 'uploaded') { throw 'The release must contain Deckhand.exe.' }
+
+          $path = 'manifests/x/Xssistant/Deckhand'
+          $catalog = gh api "repos/microsoft/winget-pkgs/contents/$path" 2>$null
+          if ($LASTEXITCODE) { throw 'The initial WinGet package must merge before automatic updates can run. Retry this workflow after it merges.' }
+          $versions = $catalog | ConvertFrom-Json
+          if ($versions.name -contains $version) { Write-Host "WinGet already contains $version."; return }
+
+          $query = 'repo:microsoft/winget-pkgs is:pr is:open in:title Xssistant.Deckhand'
+          $pulls = gh api -X GET search/issues -f "q=$query" | ConvertFrom-Json
+          if ($LASTEXITCODE) { throw 'Could not check for duplicate WinGet pull requests.' }
+          $existing = $pulls.items | Where-Object { $_.title -match "(?<![\d.])$([regex]::Escape($version))(?![\d.])" }
+          if ($existing) { Write-Host ($existing.html_url -join ', '); return }
+
+          if (!$env:WINGET_CREATE_GITHUB_TOKEN) { throw 'Set the DECKHAND_WINGET_TOKEN repository secret before submitting updates.' }
+          $tool = Join-Path $env:RUNNER_TEMP 'wingetcreate.exe'
+          Invoke-WebRequest 'https://aka.ms/wingetcreate/latest' -OutFile $tool
+          & $tool update Xssistant.Deckhand --version $version --urls "$($asset.browser_download_url)|x64" --release-notes-url $release.html_url --prtitle "Update: Xssistant.Deckhand to $version" --submit --no-open
+          if ($LASTEXITCODE) { throw 'WinGet manifest submission failed.' }

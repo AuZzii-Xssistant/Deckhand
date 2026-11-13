@@ -7,6 +7,7 @@
 <p align="center"><strong>Put your files to work.</strong></p>
 
 <p align="center">
+  <a href="https://apps.microsoft.com/detail/9p5314gfs8s6">Get it from Microsoft Store</a> ·
   <a href="https://auzzii-xssistant.github.io/Deckhand/">Website</a> ·
   <a href="https://github.com/AuZzii-Xssistant/Deckhand/releases/latest/download/Deckhand.exe">Download from GitHub</a> ·
   <a href="https://github.com/AuZzii-Xssistant/Deckhand/issues/new/choose">Report an issue</a>
@@ -22,13 +23,13 @@ On a ship, the deckhand is the crew member who does the actual handling: moving 
 
 ## Get started
 
-**Microsoft Store:** The first release is in certification. You can download Deckhand from GitHub now.
+Install the signed version from the [Microsoft Store](https://apps.microsoft.com/detail/9p5314gfs8s6) for automatic updates, or follow the steps below to use the free portable GitHub build.
 
 1. Use **64-bit Windows 10 or 11** with the **Microsoft Edge WebView2 Runtime**. If the runtime is missing, install the [WebView2 Evergreen Runtime from Microsoft](https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section).
 2. Download **Deckhand.exe** from [GitHub Releases](https://github.com/AuZzii-Xssistant/Deckhand/releases/latest). The release also provides a SHA-256 checksum.
 3. Run the executable from a folder you intend to keep. Deckhand ships as a standalone executable. Start with a test folder, preview a rule, and check the proposed destinations before running it.
 
-> **Unsigned Windows executable.** Deckhand is currently distributed without a code-signing signature. Windows SmartScreen may show an unknown-publisher or unrecognised-app warning. Verify the download against the release checksum before deciding whether to run it.
+> **Unsigned GitHub download.** The portable executable is unsigned. Windows SmartScreen may show an unknown-publisher or unrecognised-app warning. Verify the download against the release checksum before deciding whether to run it.
 
 Deckhand is in beta. Keep backups of important files, especially before trying rules that delete or overwrite.
 

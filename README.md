@@ -40,6 +40,12 @@ Deckhand is in beta. Keep backups of important files, especially before trying r
 - **Review and recover.** Preview proposed actions, inspect the History and log after a run, and undo actions that Deckhand can reverse.
 - **Reuse your setup.** Export rules and presets or back up your library. Deckhand also offers an optional Explorer right-click menu and command-line controls.
 
+## Guides
+
+- [Rules, previews and diagnostics](docs/WORKFLOWS.md)
+- [Connect a local AI client with MCP](docs/MCP.md)
+- [AI rule authoring guide](docs/AI-AUTHORING.md), [worked examples](docs/AI-AUTHORING-EXAMPLES.md), and [draft schema](docs/deckhand-draft.schema.json)
+
 ## Screenshots
 
 The screenshots use sample data. The appearance may vary by release.

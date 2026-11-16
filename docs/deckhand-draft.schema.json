@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deckhand.local/schema/draft/1",
+  "title": "Deckhand draft (export envelope) v1",
+  "description": "Rules, presets, variables and scripts for import. Drafts must set enabled:false on rules. Print with: Deckhand.exe --authoring-schema. Check with: Deckhand.exe --validate-draft draft.json",
+  "x-schema-version": 1,
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["deckhand_export"],
+  "properties": {
+    "deckhand_export": {"const": 1},
+    "rules": {"type": "array", "items": {"$ref": "#/$defs/rule"}},
+    "presets": {"type": "array", "items": {"$ref": "#/$defs/preset"}},
+    "variables": {"type": "array", "items": {"$ref": "#/$defs/uservar"}},
+    "scripts": {"type": "array", "items": {"$ref": "#/$defs/script"}}
+  },
+  "$defs": {
+    "str": {"type": "string"},
+    "strs": {"type": "array", "items": {"type": "string"}},
+    "conflict": {"enum": ["rename", "overwrite", "skip"], "default": "rename"},
+    "on_missing": {"enum": ["fail", "skip", "fallback"], "default": "fail"},
+    "text_op": {"enum": ["is", "is_not", "contains", "not_contains", "starts_with", "ends_with", "regex", "not_regex", "empty", "not_empty"]},
+    "num_op": {"enum": ["gt", "ge", "lt", "le", "eq", "ne", "between"]},
+    "date_op": {"enum": ["older_than", "newer_than", "before", "after", "on"]},
+    "date_unit": {"enum": ["minutes", "hours", "days", "weeks", "months", "years"], "default": "days"},
+    "size_unit": {"enum": ["bytes", "kb", "mb", "gb"]},
+    "keep": {"enum": ["oldest", "newest"], "default": "oldest"},
+    "shell": {"enum": ["default", "cmd", "power_shell", "pwsh"], "default": "default"},
+    "script_shell": {"enum": ["cmd", "power_shell", "pwsh", "other"], "default": "power_shell"},
+    "sort_by": {"enum": ["type", "extension", "year", "month", "day"]},
+    "folder_which": {"enum": ["source", "current"], "default": "source"},
+    "exclusion_kind": {"enum": ["path", "name", "name_pattern", "folder", "extension"]},
+    "schedule_kind": {"enum": ["daily", "weekly", "monthly", "interval"]},
+
+    "cond": {
+      "discriminator": {"propertyName": "kind"},
+      "oneOf": [
+        {"$ref": "#/$defs/c_all"}, {"$ref": "#/$defs/c_any"}, {"$ref": "#/$defs/c_not"}, {"$ref": "#/$defs/c_all_files"},
+        {"$ref": "#/$defs/c_text"}, {"$ref": "#/$defs/c_number"}, {"$ref": "#/$defs/c_date"}, {"$ref": "#/$defs/c_file_type"},
+        {"$ref": "#/$defs/c_duplicate"}, {"$ref": "#/$defs/c_folder_age"}, {"$ref": "#/$defs/c_no_ocr"}, {"$ref": "#/$defs/c_sleep"}
+      ]
+    },
+    "c_all": {"type": "object", "additionalProperties": false, "required": ["kind", "items"], "properties": {"kind": {"const": "all"}, "items": {"type": "array", "items": {"$ref": "#/$defs/cond"}}}},
+    "c_any": {"type": "object", "additionalProperties": false, "required": ["kind", "items"], "properties": {"kind": {"const": "any"}, "items": {"type": "array", "items": {"$ref": "#/$defs/cond"}}}},
+    "c_not": {"type": "object", "additionalProperties": false, "required": ["kind", "item"], "properties": {"kind": {"const": "not"}, "item": {"$ref": "#/$defs/cond"}}},
+    "c_all_files": {"type": "object", "additionalProperties": false, "required": ["kind"], "properties": {"kind": {"const": "all_files"}}},
+    "c_text": {"type": "object", "additionalProperties": false, "required": ["kind", "var", "op"], "properties": {
+      "kind": {"const": "text"}, "var": {"type": "string"}, "op": {"$ref": "#/$defs/text_op"}, "value": {"type": "string"},
+      "value_var": {"type": ["string", "null"]}, "case_sensitive": {"type": "boolean"}, "wildcard": {"type": "boolean"}}},
+    "c_number": {"type": "object", "additionalProperties": false, "required": ["kind", "var", "op", "value"], "properties": {
+      "kind": {"const": "number"}, "var": {"type": "string"}, "op": {"$ref": "#/$defs/num_op"}, "value": {"type": "number"}, "value2": {"type": "number"},
+      "unit": {"anyOf": [{"$ref": "#/$defs/size_unit"}, {"type": "null"}]}, "raw": {"type": ["string", "null"]}, "raw2": {"type": ["string", "null"]}}},
+    "c_date": {"type": "object", "additionalProperties": false, "required": ["kind", "var", "op"], "properties": {
+      "kind": {"const": "date"}, "var": {"type": "string"}, "op": {"$ref": "#/$defs/date_op"}, "amount": {"type": "integer"},
+      "unit": {"$ref": "#/$defs/date_unit"}, "date": {"type": "string"}}},
+    "c_file_type": {"type": "object", "additionalProperties": false, "required": ["kind", "types"], "properties": {
+      "kind": {"const": "file_type"}, "negate": {"type": "boolean"}, "types": {"$ref": "#/$defs/strs"}}},
+    "c_duplicate": {"type": "object", "additionalProperties": false, "required": ["kind"], "properties": {
+      "kind": {"const": "duplicate"}, "folders": {"$ref": "#/$defs/strs"}, "subfolders": {"type": "boolean"}, "keep": {"$ref": "#/$defs/keep"}}},
+    "c_folder_age": {"type": "object", "additionalProperties": false, "required": ["kind", "op", "amount"], "properties": {
+      "kind": {"const": "folder_age"}, "op": {"enum": ["older_than", "newer_than"]}, "amount": {"type": "integer"},
+      "unit": {"$ref": "#/$defs/date_unit"}, "subfolders": {"type": "boolean"}}},
+    "c_no_ocr": {"type": "object", "additionalProperties": false, "required": ["kind", "item"], "properties": {"kind": {"const": "no_ocr"}, "item": {"$ref": "#/$defs/cond"}}},
+    "c_sleep": {"type": "object", "additionalProperties": false, "required": ["kind", "millis"], "properties": {"kind": {"const": "sleep"}, "millis": {"type": "integer"}}},
+
+    "action": {
+      "discriminator": {"propertyName": "kind"},
+      "oneOf": [
+        {"$ref": "#/$defs/a_move"}, {"$ref": "#/$defs/a_copy"}, {"$ref": "#/$defs/a_rename"}, {"$ref": "#/$defs/a_change_ext"},
+        {"$ref": "#/$defs/a_sort"}, {"$ref": "#/$defs/a_recycle"}, {"$ref": "#/$defs/a_delete"}, {"$ref": "#/$defs/a_extract"},
+        {"$ref": "#/$defs/a_zip"}, {"$ref": "#/$defs/a_run"}, {"$ref": "#/$defs/a_run_script"},
+        {"$ref": "#/$defs/a_log"}, {"$ref": "#/$defs/a_notify"}, {"$ref": "#/$defs/a_remove_empty_folder"}
+      ]
+    },
+    "a_move": {"type": "object", "additionalProperties": false, "required": ["kind", "dest"], "properties": {
+      "kind": {"const": "move"}, "dest": {"type": "string"}, "on_conflict": {"$ref": "#/$defs/conflict"}, "keep_structure": {"type": "boolean"},
+      "remove_empty": {"type": "boolean"}, "on_missing": {"$ref": "#/$defs/on_missing"}}},
+    "a_copy": {"type": "object", "additionalProperties": false, "required": ["kind", "dest"], "properties": {
+      "kind": {"const": "copy"}, "dest": {"type": "string"}, "on_conflict": {"$ref": "#/$defs/conflict"}, "keep_structure": {"type": "boolean"},
+      "follow": {"type": "boolean"}, "on_missing": {"$ref": "#/$defs/on_missing"}}},
+    "a_rename": {"type": "object", "additionalProperties": false, "required": ["kind", "name"], "properties": {
+      "kind": {"const": "rename"}, "name": {"type": "string"}, "on_conflict": {"$ref": "#/$defs/conflict"}, "on_missing": {"$ref": "#/$defs/on_missing"}}},
+    "a_change_ext": {"type": "object", "additionalProperties": false, "required": ["kind", "ext"], "properties": {"kind": {"const": "change_ext"}, "ext": {"type": "string"}}},
+    "a_sort": {"type": "object", "additionalProperties": false, "required": ["kind", "base", "by"], "properties": {
+      "kind": {"const": "sort"}, "base": {"type": "string"}, "by": {"$ref": "#/$defs/sort_by"}, "on_conflict": {"$ref": "#/$defs/conflict"},
+      "remove_empty": {"type": "boolean"}, "on_missing": {"$ref": "#/$defs/on_missing"}}},
+    "a_recycle": {"type": "object", "additionalProperties": false, "required": ["kind"], "properties": {"kind": {"const": "recycle"}, "remove_empty": {"type": "boolean"}}},
+    "a_delete": {"type": "object", "additionalProperties": false, "required": ["kind"], "properties": {"kind": {"const": "delete"}, "remove_empty": {"type": "boolean"}}},
+    "a_extract": {"type": "object", "additionalProperties": false, "required": ["kind"], "properties": {"kind": {"const": "extract"}, "dest": {"type": "string"}, "delete_after": {"type": "boolean"}}},
+    "a_zip": {"type": "object", "additionalProperties": false, "required": ["kind", "zip"], "properties": {
+      "kind": {"const": "zip"}, "zip": {"type": "string"}, "on_conflict": {"$ref": "#/$defs/conflict"}, "keep_structure": {"type": "boolean"}, "on_missing": {"$ref": "#/$defs/on_missing"}}},
+    "a_run": {"type": "object", "additionalProperties": false, "required": ["kind", "command"], "properties": {
+      "kind": {"const": "run"}, "command": {"type": "string"}, "shell": {"$ref": "#/$defs/shell"}, "elevated": {"type": "boolean"}, "timeout_secs": {"type": "integer"}}},
+    "a_run_script": {"type": "object", "additionalProperties": false, "required": ["kind", "script"], "properties": {"kind": {"const": "run_script"}, "script": {"type": "string"}, "args": {"type": "string"}}},
+    "a_log": {"type": "object", "additionalProperties": false, "required": ["kind", "message"], "properties": {"kind": {"const": "log"}, "message": {"type": "string"}}},
+    "a_notify": {"type": "object", "additionalProperties": false, "required": ["kind", "message"], "properties": {"kind": {"const": "notify"}, "message": {"type": "string"}}},
+    "a_remove_empty_folder": {"type": "object", "additionalProperties": false, "required": ["kind"], "properties": {"kind": {"const": "remove_empty_folder"}, "which": {"$ref": "#/$defs/folder_which"}, "and_parents": {"type": "boolean"}}},
+
+    "watch_folder": {"type": "object", "additionalProperties": false, "required": ["path"], "properties": {
+      "path": {"type": "string"}, "subfolders": {"type": "boolean"}, "interval_minutes": {"type": "integer"}, "exclude_folders": {"$ref": "#/$defs/strs"}}},
+    "exclusion": {"type": "object", "additionalProperties": false, "required": ["kind", "value"], "properties": {
+      "kind": {"$ref": "#/$defs/exclusion_kind"}, "value": {"type": "string"}, "note": {"type": "string"}, "added_at": {"type": "string"}}},
+    "schedule": {"type": "object", "additionalProperties": false, "required": ["kind"], "properties": {
+      "kind": {"$ref": "#/$defs/schedule_kind"}, "time": {"type": "string"}, "days": {"type": "array", "items": {"type": "integer"}}, "every_minutes": {"type": "integer"},
+      "watch_live": {"type": "boolean"}, "run_missed": {"type": "boolean"}, "day": {"type": "integer"}, "last_day": {"type": "boolean"}}},
+
+    "rule": {"type": "object", "additionalProperties": false, "required": ["id", "name"], "properties": {
+      "id": {"type": "string"}, "name": {"type": "string"}, "enabled": {"type": "boolean"}, "group": {"type": "string"}, "note": {"type": "string"},
+      "folders": {"type": "array", "items": {"$ref": "#/$defs/watch_folder"}}, "condition": {"$ref": "#/$defs/cond"},
+      "actions": {"type": "array", "items": {"$ref": "#/$defs/action"}}, "schedule": {"anyOf": [{"$ref": "#/$defs/schedule"}, {"type": "null"}]},
+      "group_id": {"type": ["string", "null"]}, "allow_ocr": {"type": "boolean"}, "exclude": {"type": "array", "items": {"$ref": "#/$defs/exclusion"}},
+      "skip_destinations": {"type": "boolean"}, "report_missing_values": {"type": "boolean"}, "settle_seconds": {"type": ["integer", "null"]}}},
+    "preset": {"type": "object", "additionalProperties": false, "required": ["id", "name"], "properties": {
+      "id": {"type": "string"}, "name": {"type": "string"}, "description": {"type": "string"}, "category": {"type": "string"}, "builtin": {"type": "boolean"},
+      "subfolders": {"type": "boolean"}, "condition": {"$ref": "#/$defs/cond"}, "actions": {"type": "array", "items": {"$ref": "#/$defs/action"}},
+      "variables": {"type": "array", "items": {"$ref": "#/$defs/uservar"}}, "allow_ocr": {"type": "boolean"}, "exclude": {"type": "array", "items": {"$ref": "#/$defs/exclusion"}},
+      "modified": {"type": "boolean"}}},
+
+    "uservar": {"type": "object", "additionalProperties": false, "required": ["id", "title", "def"], "properties": {
+      "id": {"type": "string"}, "title": {"type": "string"}, "source": {"type": "string"},
+      "occurrence": {"type": "object", "additionalProperties": false, "properties": {"number": {"type": "integer"}, "from_top": {"type": "boolean"}}},
+      "def": {"$ref": "#/$defs/vardef"}}},
+    "vardef": {
+      "discriminator": {"propertyName": "type"},
+      "oneOf": [{"$ref": "#/$defs/v_wordlist"}, {"$ref": "#/$defs/v_dictionary"}, {"$ref": "#/$defs/v_regex"}, {"$ref": "#/$defs/v_pattern"}, {"$ref": "#/$defs/v_date"}, {"$ref": "#/$defs/v_custom_date"}]
+    },
+    "v_wordlist": {"type": "object", "additionalProperties": false, "required": ["type", "words"], "properties": {"type": {"const": "wordlist"}, "words": {"$ref": "#/$defs/strs"}}},
+    "v_dictionary": {"type": "object", "additionalProperties": false, "required": ["type", "items"], "properties": {"type": {"const": "dictionary"}, "items": {"type": "array", "items": {
+      "type": "object", "additionalProperties": false, "required": ["find", "ret"], "properties": {"find": {"type": "string"}, "ret": {"type": "string"}}}}}},
+    "v_regex": {"type": "object", "additionalProperties": false, "required": ["type", "pattern"], "properties": {
+      "type": {"const": "regex"}, "pattern": {"type": "string"}, "ignore_case": {"type": "boolean"}, "group1": {"type": "boolean"},
+      "opts": {"type": "object", "additionalProperties": false, "properties": {
+        "multiline": {"type": "boolean"}, "singleline": {"type": "boolean"}, "ignore_whitespace": {"type": "boolean"}, "line_breaks_as_spaces": {"type": "boolean"},
+        "pdf_layout": {"enum": ["", "lines", "columns"]}, "group": {"type": "string"}}}}},
+    "v_pattern": {"type": "object", "additionalProperties": false, "required": ["type", "parts"], "properties": {
+      "type": {"const": "pattern"}, "parts": {"$ref": "#/$defs/patparts"}, "before": {"$ref": "#/$defs/patparts"}, "after": {"$ref": "#/$defs/patparts"}}},
+    "patparts": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["kind"], "properties": {
+      "kind": {"enum": ["digit", "number", "number_sep", "char", "word", "text", "line", "space", "literal"]}, "text": {"type": "string"}}}},
+    "v_date": {"type": "object", "additionalProperties": false, "required": ["type"], "properties": {
+      "type": {"const": "date"}, "order": {"enum": ["", "auto", "dmy", "mdy", "ymd"]}, "format": {"type": "string"}}},
+    "v_custom_date": {"type": "object", "additionalProperties": false, "required": ["type", "source", "format"], "properties": {
+      "type": {"const": "custom_date"}, "source": {"enum": ["now", "created", "modified", "accessed"]}, "format": {"type": "string"}}},
+
+    "script": {"type": "object", "additionalProperties": false, "required": ["id", "name", "body"], "properties": {
+      "id": {"type": "string"}, "name": {"type": "string"}, "description": {"type": "string"}, "group": {"type": "string"},
+      "shell": {"$ref": "#/$defs/script_shell"}, "interpreter": {"type": "string"}, "extension": {"type": "string"}, "args": {"type": "string"},
+      "body": {"type": "string"}, "elevated": {"type": "boolean"}, "workdir": {"type": "string"}, "timeout_secs": {"type": "integer"}, "stop_on_error": {"type": "boolean"}, "last_run": {"type": ["object", "null"]}}}
+  }
+}

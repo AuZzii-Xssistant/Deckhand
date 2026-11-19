@@ -196,7 +196,7 @@ table.fit tbody tr:last-child td { border-bottom: 0; }
 .ba b { display: block; min-width: 0; margin: 0 0 .15rem; padding: 0; background: none; border-radius: 0; text-align: left; font-size: .72rem; letter-spacing: .1em; color: var(--muted); }
 .story-text .muted { margin: .9rem 0 0; }
 .story figure { align-self: center; }
-@media (max-width: 860px) { .story { padding: 1.1rem; gap: 1.1rem; } }
+@media (max-width: 860px) { .story { grid-template-columns: minmax(0, 1fr); padding: 1.1rem; gap: 1.1rem; } .story-text h3 { flex-wrap: nowrap; } .ba code { overflow-wrap: anywhere; } }
 
 /* requirements and beta */
 .setup2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 2.5rem; align-items: stretch; }

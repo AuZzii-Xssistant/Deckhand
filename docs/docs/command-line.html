@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Command line · Deckhand documentation</title>
+<meta name="description" content="Run presets and rules without opening the window, and check AI-written drafts.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="../deckhand-mark.svg" type="image/svg+xml">
+<script src="theme-init.js"></script>
+<link rel="stylesheet" href="docs.css">
+<link rel="stylesheet" href="../viewer.css">
+<script src="../viewer.js" defer></script>
+<script src="search-index.js" defer></script>
+<script src="docs.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<header class="topbar">
+  <button class="menu-btn" type="button" aria-label="Open navigation menu" aria-controls="sidebar" aria-expanded="false"><span class="bars" aria-hidden="true"></span></button>
+  <a class="brand" href="../index.html" title="Deckhand home"><img src="../deckhand-mark.svg" alt="" width="28" height="28"><span class="brand-name">Deckhand</span></a><a class="brand-docs" href="index.html" aria-label="Documentation home">Docs</a>
+  <div class="search" role="search">
+    <label class="visually-hidden" for="search-input">Search the documentation</label>
+    <span class="search-icon"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m12.5 12.5 4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+    <input id="search-input" type="search" placeholder="Search docs" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false" aria-controls="search-results" aria-autocomplete="list">
+    <kbd class="search-hint" aria-hidden="true">/</kbd>
+    <ul id="search-results" class="search-results" role="listbox" aria-label="Search results" hidden></ul>
+  </div>
+  <nav class="top-links" aria-label="Site">
+    <a class="navpill navpill-back" href="../index.html"><span class="long">Back to main site</span><span class="short">Main site</span></a>
+    <a class="navpill navpill-gh" href="https://github.com/AuZzii-Xssistant/Deckhand" rel="noopener">GitHub<span class="sr-only"> (opens on GitHub)</span></a>
+  </nav>
+  <button class="theme-btn" type="button" aria-label="Switch colour theme" title="Switch colour theme"><span>Light</span></button>
+</header>
+<div class="shell">
+  <nav id="sidebar" class="sidebar" aria-label="Documentation"><div class="nav-group"><h2 class="nav-title">Getting started</h2><ul><li><a href="index.html">Overview</a></li><li><a href="install.html">Install</a></li><li><a href="first-rule.html">Your first rule</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Concepts</h2><ul><li><a href="rules-and-watching.html">Rules, folders and watching</a></li><li><a href="conditions-and-exclusions.html">Conditions and exclusions</a></li><li><a href="actions-and-conflicts.html">Actions and conflicts</a></li><li><a href="presets.html">Presets</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Guides</h2><ul><li><a href="editors.html">Guided and Full editor</a></li><li><a href="preview-run-undo.html">Preview, Run and Undo</a></li><li><a href="simulate.html">Simulate</a></li><li><a href="history-and-log.html">History and the Log</a></li><li><a href="diagnostics.html">Diagnostics</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Reference</h2><ul><li><a href="conditions-reference.html">Conditions reference</a></li><li><a href="actions-reference.html">Actions reference</a></li><li><a href="variables-and-transforms.html">Variables and transforms</a></li><li><a href="settings.html">Settings</a></li><li><a href="keyboard-shortcuts.html">Keyboard shortcuts</a></li><li><a href="command-line.html" aria-current="page">Command line</a></li></ul></div><div class="nav-group"><h2 class="nav-title">AI and automation</h2><ul><li><a href="ai-authoring.html">Writing rules with an AI assistant</a></li><li><a href="mcp.html">Connect an AI client (MCP)</a></li><li><a href="mcp-setup.html">Set up an AI client</a></li><li><a href="mcp-tools.html">MCP tools reference</a></li><li><a href="mcp-safety.html">MCP safety and privacy</a></li><li><a href="mcp-troubleshooting.html">MCP troubleshooting and FAQ</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Help</h2><ul><li><a href="troubleshooting.html">Troubleshooting and FAQ</a></li><li><a href="privacy.html">Privacy</a></li></ul></div><div class="nav-group side-links"><ul><li><a href="../index.html">← Back to main site</a></li><li><a href="https://github.com/AuZzii-Xssistant/Deckhand" rel="noopener">GitHub ↗</a></li></ul></div></nav>
+  <div class="scrim" hidden></div>
+  <main id="content" class="content" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Docs</a></li><li>Reference</li><li aria-current="page">Command line</li></ol></nav>
+    <details class="toc-mobile"><summary>On this page</summary><ul><li class="l2"><a href="#run-a-rule-or-a-preset">Run a rule or a preset</a></li><li class="l2"><a href="#exit-codes">Exit codes</a></li><li class="l2"><a href="#where-to-find-the-options">Where to find the options</a></li><li class="l2"><a href="#authoring-helpers">Authoring helpers</a></li><li class="l2"><a href="#explorer-menu">Explorer menu</a></li></ul></details>
+    <article class="doc">
+<h1>Command line</h1>
+<p class="lede">Run presets and rules without opening the window, and check AI-written drafts.</p>
+<p>Deckhand can run a preset or rule without opening its window. Runs started this way appear in <strong>History</strong> with the source <code>cli</code>.</p>
+<p>The <strong>Command line</strong> card in Settings (screenshot) shows the usage and the exit codes of the version you have installed.</p>
+<figure><a href="../screenshots/settings/settings-backup.png"><img src="../screenshots/settings/settings-backup.png" alt="Settings with the Command line card: the usage lines for --run-preset and --run-rule and the list of exit codes 0 to 6" loading="lazy" width="1440" height="900"></a><figcaption>Settings with the Command line card: the usage lines for --run-preset and --run-rule and the list of exit codes 0 to 6</figcaption></figure>
+<aside class="callout note" role="note"><p class="callout-title">Note</p><p>The complete list of options and exit codes is shown in the app under <strong>Settings → Command line</strong>, which always matches the version you have installed.</p></aside>
+<h2 id="run-a-rule-or-a-preset">Run a rule or a preset<a class="hlink" href="#run-a-rule-or-a-preset" aria-label="Copy link to Run a rule or a preset"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<div class="table-wrap" role="region" tabindex="0" aria-label="Command table"><table><thead><tr><th scope="col">Command</th><th scope="col">What it does</th></tr></thead><tbody><tr><td><code>Deckhand.exe --run-rule &quot;&lt;name or id&gt;&quot;</code></td><td>Runs a saved rule once on its own watch folders. It does not need to be switched on.</td></tr><tr><td><code>Deckhand.exe --run-preset &quot;&lt;name or id&gt;&quot; --folder &quot;&lt;path&gt;&quot;</code></td><td>Runs a preset on one folder.</td></tr></tbody></table></div>
+<p>Without <code>--yes</code> (or with <code>--dry-run</code>) only the preview is printed and nothing is changed. Add <code>--yes</code> for a real run and <code>--json</code> for output a program can read.</p>
+<p><strong>Prefer the id.</strong> Names are not unique: two rules can share one name. A name can be used when it is unique, but an id always finds exactly one rule or preset. A script or an AI client should use the id, which <code>--list-presets --json</code> and the MCP rule list return.</p>
+<h2 id="exit-codes">Exit codes<a class="hlink" href="#exit-codes" aria-label="Copy link to Exit codes"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<div class="table-wrap" role="region" tabindex="0" aria-label="Code table"><table><thead><tr><th scope="col">Code</th><th scope="col">Meaning</th></tr></thead><tbody><tr><td>0</td><td>Everything went well, or the preview found nothing that would fail.</td></tr><tr><td>1</td><td>The run finished but some steps failed, or the preview says some would fail.</td></tr><tr><td>2</td><td>Usage error: unknown option, missing value or missing <code>--folder</code>. Nothing was done.</td></tr><tr><td>3</td><td>Not found: no such preset, rule or folder.</td></tr><tr><td>4</td><td>A real run was asked for without <code>--yes</code>. Nothing was changed; the preview was printed.</td></tr><tr><td>5</td><td>Internal error, for example the run finished but could not be written to the history.</td></tr><tr><td>6</td><td>Ambiguous: several rules or presets have that name. Nothing was done. Run it again with the id.</td></tr></tbody></table></div>
+<p>With <code>--json</code>, exit code 6 prints an error object with <code>&quot;ambiguous&quot;: true</code> and a <code>candidates</code> list. Each candidate has its <code>id</code>, <code>name</code>, <code>group</code> and more, so a script can pick the right one and run the same command with that id:</p>
+<div class="code"><pre tabindex="0"><code class="lang-text">{&quot;schema&quot;:1,&quot;mode&quot;:&quot;error&quot;,&quot;exit_code&quot;:6,&quot;error&quot;:&quot;...&quot;,&quot;ambiguous&quot;:true,&quot;candidates&quot;:[{&quot;id&quot;:&quot;r_inv&quot;,&quot;name&quot;:&quot;Invoices to Documents&quot;,&quot;group&quot;:&quot;Documents&quot;,...}]}</code></pre></div>
+<h2 id="where-to-find-the-options">Where to find the options<a class="hlink" href="#where-to-find-the-options" aria-label="Copy link to Where to find the options"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<ol><li>Open Deckhand and go to <strong>Settings</strong>.</li><li>Find the <strong>Command line</strong> card. It lists every option and exit code for your version.</li></ol>
+<h2 id="authoring-helpers">Authoring helpers<a class="hlink" href="#authoring-helpers" aria-label="Copy link to Authoring helpers"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<p>These options help an AI tool or script that writes rule drafts. They validate and print information. They never import or run anything.</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="Command table"><table><thead><tr><th scope="col">Command</th><th scope="col">What it does</th></tr></thead><tbody><tr><td><code>Deckhand.exe --authoring-schema</code></td><td>Prints the JSON schema for rule drafts.</td></tr><tr><td><code>Deckhand.exe --authoring-catalogue</code></td><td>Lists IDs you can reuse in a draft.</td></tr><tr><td><code>Deckhand.exe --validate-draft draft.json</code></td><td>Checks a draft and reports structured errors.</td></tr><tr><td><code>Deckhand.exe --validate-draft draft.json --example &quot;C:\full\file.ext&quot;</code></td><td>Also simulates the draft against a synthetic example file.</td></tr></tbody></table></div>
+<div class="code"><pre tabindex="0"><code class="lang-powershell">.\Deckhand.exe --validate-draft .\draft.json</code></pre></div>
+<p>The schema is also published as <a href="../deckhand-draft.schema.json">deckhand-draft.schema.json</a>.</p>
+<h2 id="explorer-menu">Explorer menu<a class="hlink" href="#explorer-menu" aria-label="Copy link to Explorer menu"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<p><strong>Settings</strong> can add an optional Explorer right-click menu for Deckhand.</p>
+    </article>
+    <nav class="pager" aria-label="Previous and next pages">
+      <a class="prev" href="keyboard-shortcuts.html" rel="prev"><span>Previous</span><strong>Keyboard shortcuts</strong></a>
+      <a class="next" href="ai-authoring.html" rel="next"><span>Next</span><strong>Writing rules with an AI assistant</strong></a>
+    </nav>
+    <footer class="doc-foot"><p>Deckhand is in beta. Found something unclear or wrong? <a href="https://github.com/AuZzii-Xssistant/Deckhand/issues/new/choose">Tell us</a>. · <a href="../privacy.html">Privacy policy</a></p></footer>
+  </main>
+  <aside class="toc" aria-label="On this page"><h2 class="toc-title">On this page</h2><ul><li class="l2"><a href="#run-a-rule-or-a-preset">Run a rule or a preset</a></li><li class="l2"><a href="#exit-codes">Exit codes</a></li><li class="l2"><a href="#where-to-find-the-options">Where to find the options</a></li><li class="l2"><a href="#authoring-helpers">Authoring helpers</a></li><li class="l2"><a href="#explorer-menu">Explorer menu</a></li></ul></aside>
+</div>
+</body>
+</html>

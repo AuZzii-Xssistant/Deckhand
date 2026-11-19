@@ -3,95 +3,435 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Deckhand is a Windows file organiser with folder rules, previews, schedules, and run history.">
-  <meta name="theme-color" content="#0a1824">
+  <meta name="description" content="Deckhand is a Windows file organiser. Write a rule once, preview it, then run it, schedule it or let it watch a folder. Undo is built in and nothing leaves your PC.">
+  <meta name="color-scheme" content="light dark">
   <title>Deckhand — Windows file organiser</title>
   <link rel="icon" href="deckhand-mark.svg" type="image/svg+xml">
+  <script src="theme-init.js"></script>
   <link rel="stylesheet" href="styles.css">
-  <script src="screenshots.js" defer></script>
+  <script src="site.js" defer></script>
+  <link rel="stylesheet" href="viewer.css">
+  <script src="viewer.js" defer></script>
+  <script src="carousel.js" defer></script>
+  <script src="faq.js" defer></script>
+  <script src="scene.js" defer></script>
+  <script src="scene-mobile.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
-  <header class="wrap top">
-    <a class="brand" href="./"><img src="deckhand-mark.svg" alt="" width="36" height="36">Deckhand</a>
-    <nav aria-label="Main navigation">
-      <a href="#features">Features</a>
-      <a href="#screenshots">Screenshots</a>
-      <a href="#setup">Setup</a>
-      <a href="#about">About</a>
-      <a href="https://github.com/AuZzii-Xssistant/Deckhand">GitHub</a>
-    </nav>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="./"><img src="deckhand-mark.svg" alt="" width="36" height="36">Deckhand</a>
+      <nav id="site-nav" aria-label="Main navigation">
+        <div class="jumps" aria-label="On this page">
+          <a href="#features">Features</a>
+          <a href="#how">How it works</a>
+          <a href="#examples">Examples</a>
+          <a href="#safety">Safety</a>
+          <a href="#setup">Setup</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div class="away" aria-label="Other pages">
+          <a class="navpill navpill-gallery" href="screenshots/index.html">Gallery</a>
+          <a class="navpill navpill-docs" href="docs/index.html">Docs</a>
+          <a class="navpill navpill-gh" href="https://github.com/AuZzii-Xssistant/Deckhand" rel="noopener">GitHub<span class="sr-only"> (opens on GitHub)</span></a>
+        </div>
+      </nav>
+      <button class="toggle" id="theme-toggle" type="button" aria-pressed="false"><span>Light</span></button>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span class="bars" aria-hidden="true"></span></button>
+    </div>
   </header>
   <main id="main">
-    <section class="wrap hero" aria-labelledby="intro">
-      <div class="intro">
+    <section class="hero" aria-labelledby="intro">
+      <div class="wrap">
         <p class="eyebrow">FILE ORGANISER FOR WINDOWS</p>
         <h1 id="intro">Put your files to work.</h1>
         <p class="lede">Give Deckhand a folder and a rule. Preview how your files will move, then run it once or let Deckhand watch for new arrivals.</p>
         <div class="buttons">
           <a class="button" href="https://apps.microsoft.com/detail/9p5314gfs8s6">Get it from Microsoft Store</a>
-          <a class="subtle" href="https://github.com/AuZzii-Xssistant/Deckhand/releases/latest/download/Deckhand.exe">Download portable EXE</a>
-          <a class="subtle" href="#setup">Requirements and setup</a>
+          <a class="button alt" href="https://github.com/AuZzii-Xssistant/Deckhand/releases/latest/download/Deckhand.exe">Download portable EXE</a>
         </div>
-        <p class="muted">Windows 10 or 11 · 64-bit · Free beta</p>
-      </div>
-      <figure class="hero-shot">
-        <a href="screenshots/home.png"><img src="screenshots/home.png" width="1280" height="800" alt="Deckhand Home with rules watching folders and a list of recent runs"></a>
-        <figcaption>Home shows what’s running, what needs attention, and what changed.</figcaption>
-      </figure>
-    </section>
-    <section class="wrap section" id="features">
-      <h2>From a rule to a tidy folder</h2>
-      <div class="features">
-        <article><h3>Choose what matches</h3><p>Use file names, types, dates, metadata, or contents to pick the files a rule should handle.</p></article>
-        <article><h3>Decide what happens</h3><p>Move, copy, rename, sort, zip, or extract files. Preview the plan before a manual run.</p></article>
-        <article><h3>Run it your way</h3><p>Run a preset on a folder, watch for new files, or set a schedule. Review results and undo supported actions in History.</p></article>
-      </div>
-    </section>
-    <section class="wrap section" id="screenshots">
-      <h2>Inside Deckhand</h2>
-      <p class="muted">Screenshots show sample data. Select one to enlarge it.</p>
-      <div class="gallery">
-        <figure><a href="screenshots/rules.png"><img loading="lazy" src="screenshots/rules.png" alt="Rules grouped in a list with watching controls"></a><figcaption>Rules</figcaption></figure>
-        <figure><a href="screenshots/presets.png"><img loading="lazy" src="screenshots/presets.png" alt="Preset library with repeatable folder jobs"></a><figcaption>Presets</figcaption></figure>
-        <figure><a href="screenshots/schedules.png"><img loading="lazy" src="screenshots/schedules.png" alt="Schedules showing upcoming and recent runs"></a><figcaption>Schedules</figcaption></figure>
-        <figure><a href="screenshots/history.png"><img loading="lazy" src="screenshots/history.png" alt="History showing completed file operations"></a><figcaption>History</figcaption></figure>
+        <p class="muted"><span class="pill">Windows 10 or 11 · 64-bit · Free beta</span> <a href="#setup">Requirements and setup</a></p>
+        <figure class="carousel" role="group" aria-roledescription="carousel" aria-label="Deckhand in four themes" data-viewer-set>
+          <div class="slides">
+            <a class="slide" href="screenshots/themes/ocean-dark/home.png" data-name="Ocean dark" data-desc="the default look, dark with the Nautical skin"><img src="screenshots/themes/ocean-dark/home.png" width="1440" height="900" alt="Deckhand Home in the ocean dark theme"></a>
+            <a class="slide" href="screenshots/themes/ocean-light/home.png" data-name="Ocean light" data-desc="light with the Nautical skin"><img loading="lazy" src="screenshots/themes/ocean-light/home.png" width="1440" height="900" alt="Deckhand Home in the ocean light theme"></a>
+            <a class="slide" href="screenshots/themes/dark/home.png" data-name="Plain dark" data-desc="dark and minimal"><img loading="lazy" src="screenshots/themes/dark/home.png" width="1440" height="900" alt="Deckhand Home in the plain dark theme"></a>
+            <a class="slide" href="screenshots/themes/light/home.png" data-name="Plain light" data-desc="light and minimal"><img loading="lazy" src="screenshots/themes/light/home.png" width="1440" height="900" alt="Deckhand Home in the plain light theme"></a>
+          </div>
+          <div class="carousel-bar" hidden>
+            <button class="cbtn" type="button" data-c="prev" aria-label="Previous theme">&lsaquo;</button>
+            <div class="cdots"></div>
+            <button class="cbtn" type="button" data-c="next" aria-label="Next theme">&rsaquo;</button>
+            <button class="cbtn" type="button" data-c="toggle">Pause</button>
+            <figcaption class="carousel-cap"><strong>Ocean dark</strong> – the default look, dark with the Nautical skin</figcaption>
+          </div>
+          <noscript><figcaption class="carousel-cap">Deckhand Home in its default theme. Four themes are in the <a href="screenshots/index.html#themes">gallery</a>.</figcaption></noscript>
+        </figure>
       </div>
     </section>
-    <section class="wrap section" id="setup">
-      <div class="setup">
-        <div>
-          <h2>Get started on Windows</h2>
+
+    <section class="section" id="what" aria-labelledby="what-h">
+      <div class="wrap">
+        <div class="section-head wide"><h2 id="what-h">What Deckhand is</h2><p class="bigline">Deckhand is a Windows app that sorts, renames, moves, copies and tidies your files by rules you write once. It runs them when you ask, at set times, or as new files arrive.</p></div>
+        <div class="glance">
+          <article class="card"><h3>Who it is for</h3>
+            <ul class="tick">
+              <li>Anyone whose Downloads or Desktop keeps filling up</li>
+              <li>People with big photo, music or scan folders to file</li>
+              <li>Developers clearing build output and old project files</li>
+              <li>Admins and creators who want repeatable, scheduled housekeeping</li>
+            </ul></article>
+          <article class="card"><h3>What it does</h3>
+            <ul class="tick">
+              <li>Picks files by name, date, size, type, metadata or contents</li>
+              <li>Acts on them: move, copy, rename, sort, zip, extract, recycle</li>
+              <li>Shows a preview first and keeps a history you can undo from</li>
+              <li>Works on your PC, with no account</li>
+            </ul></article>
+          <article class="card"><h3>What it is not</h3>
+            <ul class="cross">
+              <li>Not a cloud service or backup service. It has no account and uploads nothing</li>
+              <li>Not for Mac, Linux or phones. It is Windows 10 and 11 only</li>
+              <li>Not a general workflow engine. Rules have no loops, and email or databases need a script</li>
+              <li>Not a finished 1.0 yet. It is in beta</li>
+            </ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft" id="features" aria-labelledby="features-h">
+      <div class="wrap">
+        <div class="section-head"><h2 id="features-h">What it can do</h2><p>Grouped by what you want done. Every item here is described in the <a href="docs/index.html">Docs</a>.</p></div>
+        <div class="fgrid">
+          <article class="card"><h3>Keep folders tidy on their own</h3>
+            <ul>
+              <li>Watch one or more folders, subfolders included, and handle new files as they arrive</li>
+              <li>Rescan every few minutes for folders where live watching is unreliable, such as network drives</li>
+              <li>Run on a schedule: daily, on chosen days, monthly, or every few minutes or hours</li>
+              <li>Make up a run that was missed while Deckhand was closed</li>
+              <li>Wait for files that are still downloading or being copied</li>
+              <li>Optional tray icon and start with Windows</li>
+            </ul></article>
+          <article class="card"><h3>Pick exactly the right files</h3>
+            <ul>
+              <li>Conditions on name, extension, folder, created, modified or accessed date, and size</li>
+              <li>File-type groups such as audio, spreadsheet or installer</li>
+              <li>Metadata from PDFs, audio files and pictures</li>
+              <li>Text inside PDF, Word, Excel, PowerPoint and plain text files</li>
+              <li>OCR for text in pictures and scans, set per File contents condition</li>
+              <li>All of, any of and none of groups, plus exclusions that always win</li>
+              <li>Duplicates: matches the extra copies and always keeps one</li>
+            </ul></article>
+          <article class="card"><h3>Move, rename and sort</h3>
+            <ul>
+              <li>Move, copy, rename and change extension</li>
+              <li>Sort into folders by type, extension, year, month or day</li>
+              <li>Zip files, or extract zip, 7z, rar and tar archives</li>
+              <li>Send to the Recycle Bin, or delete permanently if you choose</li>
+              <li>Choose what happens when a name is taken: rename, skip or overwrite</li>
+              <li>Run a command or a saved script on each file, or log and notify</li>
+            </ul></article>
+          <article class="card"><h3>Name things from the file itself</h3>
+            <ul>
+              <li>Put values such as the year, the date taken or the artist into folder and file names</li>
+              <li>Fallbacks for when a value is missing</li>
+              <li>Date maths, and transforms such as upper case, slug, replace and pad</li>
+              <li>Your own variables, found with word lists, dictionaries, patterns, regular expressions or dates</li>
+            </ul></article>
+          <article class="card"><h3>Try before you trust</h3>
+            <ul>
+              <li>Preview every manual run before anything changes</li>
+              <li>Simulate an example file through all your rules in order</li>
+              <li>Juggle now for one-off jobs you do not want to save</li>
+              <li>Presets: saved tidy-ups you run on any folder</li>
+              <li>Guided editor for a first rule, Full editor for the whole picture</li>
+              <li>Export your library and move it to another PC</li>
+            </ul></article>
+          <article class="card"><h3>See what happened, and power-user extras</h3>
+            <ul>
+              <li>History of every run with Undo, and a searchable Log</li>
+              <li>Diagnostics for CPU, memory and time per rule</li>
+              <li>AI-assisted rules: have an assistant draft a rule, then validate and review it</li>
+              <li>Local AI connection (preview) for drafting and previewing rules</li>
+              <li>Command line for running rules and presets, and for checking drafts</li>
+              <li>Optional Explorer right-click menu, command palette and keyboard shortcuts</li>
+            </ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how" aria-labelledby="how-h">
+      <div class="wrap">
+        <div class="section-head"><h2 id="how-h">How it works</h2><p>Three steps, and nothing moves until you have seen the plan.</p></div>
+        <ol class="steps">
+          <li class="card"><h3>Pick a folder and a rule</h3><p>Choose the folder to look after, then describe which files match and what should happen to them.</p></li>
+          <li class="card"><h3>Preview the plan</h3><p>See where each file would go before you run anything. Review the destinations and adjust the rule.</p></li>
+          <li class="card"><h3>Run, watch, or schedule</h3><p>Run it once, let Deckhand watch for new files, or set a schedule. Check History and undo supported actions.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section soft" id="examples" aria-labelledby="examples-h">
+      <div class="wrap">
+        <div class="section-head"><h2 id="examples-h">See it work</h2><p>Four everyday jobs, each with a screen from the app. The file names are sample data. Select a screen to enlarge it.</p></div>
+        <div class="stories" data-viewer-set>
+          <article class="story">
+            <div class="story-text">
+              <h3><span class="badge" aria-hidden="true">1</span>Clear out old installers</h3>
+              <p class="ba before"><b>Before</b> A setup file, <code>VSCodeSetup-x64-1.9.exe</code>, has sat in Downloads for weeks.</p>
+              <p class="ba after"><b>After</b> A rule for <code>.exe</code>, <code>.msi</code> and <code>.msix</code> files older than 14 days, unless the name says &ldquo;portable&rdquo; or &ldquo;keep&rdquo;, sends it to the Recycle Bin.</p>
+              <p class="muted">Simulate tested this example file against every rule without touching anything.</p>
+            </div>
+            <figure><a href="screenshots/simulate/simulate-result.png"><img loading="lazy" src="screenshots/simulate/simulate-result.png" width="1440" height="900" alt="Simulate following an example installer in Downloads through the rules; the installer clean-up rule matches and recycles it"></a><figcaption><strong>Simulate an installer</strong>The first rule matches and recycles it. The others do not match.</figcaption></figure>
+          </article>
+          <article class="story">
+            <div class="story-text">
+              <h3><span class="badge" aria-hidden="true">2</span>Remove duplicate downloads</h3>
+              <p class="ba before"><b>Before</b> Downloads holds <code>report-final.pdf</code> and copies such as <code>report-final (1).pdf</code>.</p>
+              <p class="ba after"><b>After</b> The rule matches the extra copies and keeps the oldest, and sends the rest to the Recycle Bin. One copy is always kept.</p>
+              <p class="muted">The live list shows which files match before you switch the rule on.</p>
+            </div>
+            <figure><a href="screenshots/editor/full-duplicates.png"><img loading="lazy" src="screenshots/editor/full-duplicates.png" width="1440" height="900" alt="A rule that matches duplicate files in Downloads, keeps the oldest and sends the others to the Recycle Bin, with six matching files listed"></a><figcaption><strong>Keep the oldest copy</strong>The editor lists the six matching files and the Recycle Bin action.</figcaption></figure>
+          </article>
+          <article class="story">
+            <div class="story-text">
+              <h3><span class="badge" aria-hidden="true">3</span>File screenshots by date</h3>
+              <p class="ba before"><b>Before</b> Hundreds of files named <code>Screenshot 2026-11-17 124812.png</code> pile up in one folder.</p>
+              <p class="ba after"><b>After</b> A rule moves them into place by date. History lists every file and has an undo button for each one.</p>
+              <p class="muted">The same run is also one Undo away as a whole.</p>
+            </div>
+            <figure><a href="screenshots/history/history-run-details.png"><img loading="lazy" src="screenshots/history/history-run-details.png" width="1440" height="900" alt="Run details for a screenshots rule: 1284 screenshot files, each marked done and moved, with an undo icon on every row"></a><figcaption><strong>Every file on record</strong>A run of 1,284 sample screenshots, each moved and individually undoable.</figcaption></figure>
+          </article>
+          <article class="story">
+            <div class="story-text">
+              <h3><span class="badge" aria-hidden="true">4</span>Back up projects and rotate logs</h3>
+              <p class="ba before"><b>Before</b> Nobody remembers the Friday backup, and log files keep growing.</p>
+              <p class="ba after"><b>After</b> One schedule zips the projects folder every Friday at 18:00. Another zips logs over 10 MB each night at 03:00 and then recycles them. A third backs up game saves every hour.</p>
+              <p class="muted">Schedules run while Deckhand is open. Running in the tray counts.</p>
+            </div>
+            <figure><a href="screenshots/schedules/schedules.png"><img loading="lazy" src="screenshots/schedules/schedules.png" width="1440" height="900" alt="The Schedules page with a project backups rule every Friday at 18:00, a logs rule every day at 03:00 and a game saves rule every 60 minutes"></a><figcaption><strong>Schedules</strong>The next seven days, with the last result of each.</figcaption></figure>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="video" aria-labelledby="video-h">
+      <div class="wrap">
+        <div class="section-head"><h2 id="video-h">Deckhand in motion</h2><p>Set the rules, preview, and let Deckhand handle the cargo.</p></div>
+        <figure class="demo">
+          <div class="demo-wrap"><canvas class="demo-canvas" id="demo" width="1280" height="720" role="img" aria-describedby="video-sum"></canvas><canvas class="demo-canvas-m" id="demo-m" width="1080" height="1350" role="img" aria-describedby="video-sum"></canvas></div>
+          <figcaption id="video-sum" class="sr-only">An animation, not a recording of the app. A ship named Deckhand lies beside a dock with three containers. Rules are shown, six files are previewed, and then each file travels from the ship to its container: invoices and receipts to Invoices, photos to Photos, clips to Videos. The animation ends on the logo and the line &ldquo;Put your files to work.&rdquo; It plays when it scrolls into view and repeats.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section soft" id="safety" aria-labelledby="safety-h">
+      <div class="wrap">
+        <div class="section-head"><h2 id="safety-h">Safe by design</h2><p>Deckhand works on your real files, so it is built to be cautious.</p></div>
+        <div class="safe">
+          <article class="card"><h3>You see it first</h3>
+            <ul>
+              <li>Preview lists every file and where it would go. Nothing changes until you press Run.</li>
+              <li>Edit a rule after previewing and Run is disabled until you preview again.</li>
+              <li>Untick any file, or add an exclusion. Excluded files are never touched.</li>
+              <li>Rules from an AI assistant or an import arrive switched off.</li>
+            </ul></article>
+          <article class="card"><h3>You can go back</h3>
+            <ul>
+              <li>Every run is recorded. Undo a whole run, or a single file.</li>
+              <li>Recycle sends files to the Recycle Bin, and overwritten files go there too.</li>
+              <li>Permanent delete cannot be undone, and the docs say so plainly.</li>
+              <li>If a step fails, later steps that would delete or recycle the file do not run.</li>
+            </ul></article>
+          <article class="card"><h3>It leaves files alone when unsure</h3>
+            <ul>
+              <li>Files still downloading or being copied are waited for. Locked files and unfinished downloads are skipped.</li>
+              <li>Half-finished conditions never match, so a rule you are still building cannot catch everything.</li>
+              <li>Matches found by OCR never delete, recycle or overwrite without your approval per file.</li>
+              <li>A command can only run with administrator rights if you started Deckhand that way.</li>
+            </ul></article>
+          <article class="card"><h3>It stays on your PC</h3>
+            <ul>
+              <li>No account, no telemetry, and no uploads of your files, rules, history or logs.</li>
+              <li>It does not need an internet connection and does not check for updates by itself.</li>
+              <li>Rules, history and settings live in a data folder on your PC.</li>
+              <li>A portable EXE is available. Read the <a href="privacy.html">privacy policy</a> for the details.</li>
+            </ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="fit" aria-labelledby="fit-h">
+      <div class="wrap">
+        <div class="section-head"><h2 id="fit-h">Is Deckhand right for you?</h2><p>A quick check before you install.</p></div>
+        <div class="table-wrap" role="region" tabindex="0" aria-label="Is Deckhand right for you? table">
+          <table class="fit">
+            <thead><tr><th scope="col">Deckhand fits if you&hellip;</th><th scope="col">Probably not if you&hellip;</th></tr></thead>
+            <tbody>
+              <tr><td>Use Windows 10 or 11, 64-bit</td><td>Need a Mac, Linux or mobile app</td></tr>
+              <tr><td>Want the same tidy-up done the same way every time</td><td>Only need to move a file once or twice</td></tr>
+              <tr><td>Want to preview, and undo, before you trust a rule</td><td>Want an unattended tool with no review step at all</td></tr>
+              <tr><td>Are happy to run it on your own PC, with the app open or in the tray</td><td>Need rules to run while the PC is off or Deckhand is closed</td></tr>
+              <tr><td>Want your files and history to stay on your computer</td><td>Need a hosted or synced service across devices</td></tr>
+              <tr><td>Can try a beta and keep backups of important files</td><td>Need a finished 1.0 for critical work today</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft" id="setup" aria-labelledby="setup-h">
+      <div class="wrap setup2">
+        <div class="setup-main">
+          <h2 id="setup-h">Requirements and install</h2>
+          <ul class="reqs">
+            <li><strong>Windows</strong> 10 or 11, 64-bit.</li>
+            <li><strong>WebView2</strong> The <a href="https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section">Microsoft Edge WebView2 Runtime</a>, already present on most up-to-date PCs. Install the Evergreen Runtime if it is missing.</li>
+            <li><strong>Price</strong> Free for personal and commercial use while it is in beta.</li>
+          </ul>
           <ol>
-            <li>Use 64-bit Windows 10 or 11 with the <a href="https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section">Microsoft Edge WebView2 Runtime</a>. Install the Evergreen Runtime if it is missing.</li>
-            <li>Install the signed version from the <a href="https://apps.microsoft.com/detail/9p5314gfs8s6">Microsoft Store</a> for automatic updates. For the free portable build, download <strong>Deckhand.exe</strong> from <a href="https://github.com/AuZzii-Xssistant/Deckhand/releases/latest">GitHub Releases</a> and compare it with the published SHA-256 checksum.</li>
+            <li>Get it from the Store, or download <strong>Deckhand.exe</strong> from GitHub Releases and compare it with the published SHA-256 checksum.</li>
             <li>Open Deckhand and preview a rule on a test folder. Review the destinations before you run it.</li>
           </ol>
         </div>
-        <aside>
-          <h3>Unsigned GitHub download</h3>
-          <p>The portable executable is unsigned. Windows SmartScreen may show an unknown-publisher or unrecognised-app warning.</p>
-          <p>Deckhand is in beta. Keep backups before testing rules that delete or overwrite.</p>
-        </aside>
+        <div class="setup-side">
+          <div class="table-wrap" role="region" tabindex="0" aria-label="Ways to install Deckhand table">
+            <table class="fit">
+              <thead><tr><th scope="col">Version</th><th scope="col">Best for</th><th scope="col">Updates</th></tr></thead>
+              <tbody>
+                <tr><td><a href="https://apps.microsoft.com/detail/9p5314gfs8s6">Microsoft Store</a></td><td>Most people. The signed version.</td><td>Automatic</td></tr>
+                <tr><td><a href="https://github.com/AuZzii-Xssistant/Deckhand/releases/latest">Portable EXE</a></td><td>A single file you keep in a folder of your choice.</td><td>Manual: download the new EXE and replace the old one</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <aside class="card notice">
+            <h3>Unsigned GitHub download</h3>
+            <p>The portable executable is unsigned. Windows SmartScreen may show an unknown-publisher or unrecognised-app warning. The Store version is signed.</p>
+            <p>Back up your library from <strong>Settings &rarr; Backup</strong> before replacing the portable EXE.</p>
+          </aside>
+        </div>
       </div>
     </section>
-    <section class="wrap section" id="about">
-      <h2>Why Deckhand?</h2>
-      <p class="about-copy">On a ship, the deckhand is the crew member who does the actual handling: moving cargo, stowing gear and keeping the deck in order so the vessel runs. Your PC is the ship, your files are the cargo, and Deckhand is the crew member that sorts, moves, names and tidies it, the same way every time, while you steer.</p>
+
+    <section class="section" id="beta" aria-labelledby="beta-h">
+      <div class="wrap">
+        <div class="section-head"><h2 id="beta-h">Beta, honestly</h2><p>Deckhand does real work on real files, so we would rather say what beta means than hide it.</p></div>
+        <div class="pair">
+          <article class="card"><h3>What to expect</h3>
+            <ul class="tick">
+              <li>Keep backups of important files, especially before you try a rule that deletes or overwrites.</li>
+              <li>Start on a test folder with a few sample files, and preview every new rule.</li>
+              <li>Screens and page names can change between releases. If the docs and the app disagree, the in-app Help is right.</li>
+              <li>Connecting an AI client is a preview feature. It was tested with the standalone Windows build, and Store availability depends on its command alias.</li>
+            </ul></article>
+          <article class="card"><h3>Found a problem?</h3>
+            <p>Report it on <a href="https://github.com/AuZzii-Xssistant/Deckhand/issues/new/choose">GitHub Issues</a>. Say what you did, what you expected and what happened.</p>
+            <p>Issues are public, so leave out personal file names and paths. The <a href="docs/troubleshooting.html">troubleshooting page</a> covers the common causes first.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft" id="faq" aria-labelledby="faq-h">
+      <div class="wrap">
+        <div class="section-head"><h2 id="faq-h">Frequently asked questions</h2></div>
+        <div class="faq" id="faq-list">
+          <details class="qa" id="faq-free"><summary>Is Deckhand free?</summary><div class="qa-body"><p>Yes. It is free for personal and commercial use, and currently in beta.</p></div></details>
+          <details class="qa" id="faq-delete"><summary>Will it delete my files?</summary><div class="qa-body"><p>Only if you build a rule that does. Nothing changes until you press Run on a preview you have seen. Prefer <strong>Send to Recycle Bin</strong>, which Windows can restore. <strong>Delete file</strong> is permanent and cannot be undone.</p></div></details>
+          <details class="qa" id="faq-undo"><summary>Can I undo what a rule did?</summary><div class="qa-body"><p>Yes for move, copy, rename, sort, zip, extract and recycle, from History, for a whole run or one file. Permanent delete, and anything a command or script did, cannot be undone.</p></div></details>
+          <details class="qa" id="faq-internet"><summary>Does it need the internet?</summary><div class="qa-body"><p>No. It works offline, has no account, and does not check for updates by itself. Only the Store or GitHub download needs a connection, and so would anything you add yourself, such as a script.</p></div></details>
+          <details class="qa" id="faq-contents"><summary>Does it read inside my files?</summary><div class="qa-body"><p>Only if a rule asks it to. Names, dates and sizes are always used. Contents and metadata are read when a rule has a condition on them. Everything is processed on your PC.</p></div></details>
+          <details class="qa" id="faq-ocr"><summary>Can it read text in scans and pictures?</summary><div class="qa-body"><p>Yes. A File contents condition can read pictures and scanned PDFs with OCR, which you can switch on or off in that condition's gear menu. It uses the text recogniser built into Windows, on your device. OCR can misread, so a match found through OCR needs your approval in the preview before Deckhand deletes, recycles or overwrites anything.</p></div></details>
+          <details class="qa" id="faq-network"><summary>Can it watch folders on a network drive?</summary><div class="qa-body"><p>Yes. Use <strong>Rescan</strong>, which re-scans the folder every few minutes, because live change notifications can be unreliable on network drives.</p></div></details>
+          <details class="qa" id="faq-closed"><summary>Does it run when Deckhand is closed?</summary><div class="qa-body"><p>No. Rules and schedules run while Deckhand is open, and running in the tray counts. A schedule can make up one run that was missed while it was closed.</p></div></details>
+          <details class="qa" id="faq-rule-preset"><summary>What is the difference between a rule and a preset?</summary><div class="qa-body"><p>A rule watches fixed folders, all the time or on a schedule, to keep them tidy. A preset is not tied to a folder: you choose one each time you run it, for a one-off or repeatable job. You can turn a preset into a rule.</p></div></details>
+          <details class="qa" id="faq-ai"><summary>How do I make rules with AI?</summary><div class="qa-body"><p>Open <strong>Help &rarr; Author rules with AI</strong> in Deckhand to copy the reference for your assistant. It writes a JSON draft, Deckhand validates it when you import, and the rule arrives switched off for you to review. The <a href="docs/ai-authoring.html">docs page</a> has the steps. You can also connect a local client (preview).</p></div></details>
+          <details class="qa" id="faq-store-portable"><summary>Store or portable EXE?</summary><div class="qa-body"><p>The Store version is signed and updates automatically. The portable EXE from GitHub Releases is unsigned, so SmartScreen may warn you, and you update it by hand. Compare it with the published SHA-256 checksum.</p></div></details>
+          <details class="qa" id="faq-data"><summary>Where is my data stored?</summary><div class="qa-body"><p>In a data folder on your PC: settings, rules, presets, history, logs and undo data. History and logs can contain file names and paths. Use <strong>Settings &rarr; Backup</strong> or export to move it to another PC.</p></div></details>
+          <details class="qa" id="faq-uninstall"><summary>How do I uninstall it?</summary><div class="qa-body"><p>Switch off start with Windows, the tray icon and the Explorer menu in Settings first. Then uninstall the Store version like any app, or delete the portable EXE. To remove your data as well, close Deckhand and delete its data folder.</p></div></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="learn" aria-labelledby="learn-h">
+      <div class="wrap">
+        <div class="section-head"><h2 id="learn-h">Learn more</h2></div>
+        <ul class="learn">
+          <li><a class="card-link" href="docs/index.html"><strong>Docs</strong><span>Install, first rule, conditions, actions and troubleshooting.</span></a></li>
+          <li><a class="card-link" href="screenshots/index.html"><strong>Gallery</strong><span>Every screen, in four themes.</span></a></li>
+          <li><a class="card-link" href="privacy.html"><strong>Privacy</strong><span>What is stored, and what is never sent.</span></a></li>
+          <li><a class="card-link" href="https://github.com/AuZzii-Xssistant/Deckhand/issues/new/choose" rel="noopener"><strong>GitHub issues</strong><span>Report a bug or ask a question.</span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section soft" id="about" aria-labelledby="about-h">
+      <div class="wrap about-grid">
+        <div>
+          <h2 id="about-h">Why Deckhand?</h2>
+          <p class="about-copy">On a ship, the deckhand is the crew member who does the actual handling: moving cargo, stowing gear and keeping the deck in order so the vessel runs. Your PC is the ship, your files are the cargo, and Deckhand is the crew member that sorts, moves, names and tidies it, the same way every time, while you steer.</p>
+        </div>
+        <div class="ship-card">
+          <svg class="ship" viewBox="0 0 460 300" role="presentation" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="hullg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b6475"/><stop offset=".16" stop-color="#264d61"/><stop offset="1" stop-color="#102937"/></linearGradient>
+              <linearGradient id="brg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d2e0db"/><stop offset="1" stop-color="#8fa9ad"/></linearGradient>
+            </defs>
+            <circle class="sun" cx="372" cy="56" r="24"/>
+            <g class="cloud c1"><path d="M50 62 q0 -14 14 -14 q6 -12 21 -9 q14 -3 18 11 q12 0 12 12 H55 q-5 0 -5 0Z"/></g>
+            <g class="cloud c2"><path d="M250 34 q0 -9 9 -9 q4 -8 13 -5 q9 -2 11 7 q8 0 8 7 H254Z"/></g>
+            <path class="gull" d="M300 96 q6 -8 12 0 q6 -8 12 0"/>
+            <path class="gull g2" d="M170 118 q5 -6 10 0 q5 -6 10 0"/>
+            <g class="waves-back"><path class="sea2" d="M-40 204 q20 -8 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 V320 H-40Z"/></g>
+            <g class="bob">
+              <path class="mastp" d="M62 80 V44"/><path class="pennant" d="M62 45 L92 52 L62 61Z"/>
+              <rect class="bt" x="52" y="80" width="34" height="22" rx="3"/><rect class="bg" x="58" y="86" width="22" height="8" rx="2"/>
+              <rect class="br2" x="34" y="100" width="70" height="8" rx="2"/>
+              <rect class="br" x="40" y="108" width="58" height="50" rx="3"/>
+              <rect class="bw" x="48" y="118" width="12" height="12" rx="2"/><rect class="bw" x="68" y="118" width="12" height="12" rx="2"/><rect class="bd" x="84" y="130" width="8" height="28" rx="1"/>
+              <g class="cargo"><g class="cg cg-t"><rect x="124" y="130" width="56" height="28" rx="4"/><rect class="st" x="130" y="137" width="8" height="14" rx="1"/><path d="M144 140 h28 M144 148 h20"/></g><g class="cg cg-g"><rect x="184" y="130" width="56" height="28" rx="4"/><rect class="st" x="190" y="137" width="8" height="14" rx="1"/><path d="M204 140 h28 M204 148 h20"/></g><g class="cg cg-b"><rect x="244" y="130" width="56" height="28" rx="4"/><rect class="st" x="250" y="137" width="8" height="14" rx="1"/><path d="M264 140 h28 M264 148 h20"/></g><g class="cg cg-t"><rect x="304" y="130" width="56" height="28" rx="4"/><rect class="st" x="310" y="137" width="8" height="14" rx="1"/><path d="M324 140 h28 M324 148 h20"/></g><g class="cg cg-g"><rect x="154" y="100" width="56" height="28" rx="4"/><rect class="st" x="160" y="107" width="8" height="14" rx="1"/><path d="M174 110 h28 M174 118 h20"/></g><g class="cg cg-b"><rect x="214" y="100" width="56" height="28" rx="4"/><rect class="st" x="220" y="107" width="8" height="14" rx="1"/><path d="M234 110 h28 M234 118 h20"/></g><g class="cg cg-t"><rect x="274" y="100" width="56" height="28" rx="4"/><rect class="st" x="280" y="107" width="8" height="14" rx="1"/><path d="M294 110 h28 M294 118 h20"/></g></g>
+              <path class="hull" d="M22 158 Q220 168 432 154 L414 194 Q406 214 388 218 H100 Q60 208 22 158Z"/>
+              <path class="rail" d="M28 152 H430"/>
+              <path class="stripe" d="M32 172 H424"/>
+              <circle class="port" cx="130" cy="184" r="3.6"/><circle class="port" cx="182" cy="184" r="3.6"/><circle class="port" cx="234" cy="184" r="3.6"/><circle class="port" cx="286" cy="184" r="3.6"/><circle class="port" cx="338" cy="184" r="3.6"/>
+              <text class="hname" x="120" y="205">DECKHAND</text>
+              <g transform="translate(-30 0)">
+                <path class="chain" d="M432 196 V230"/>
+                <g class="anchor">
+                  <circle class="ring" cx="432" cy="236" r="5"/>
+                  <path class="shank" d="M432 241 V276"/>
+                  <path class="shank" d="M420 250 H444"/>
+                  <path class="shank" d="M413 266 Q415 279 432 281 Q449 279 451 266"/>
+                  <path class="shank" d="M408 271 l5 -7 l7 5 M456 271 l-5 -7 l-7 5"/>
+                </g>
+                <circle class="bubble b1" cx="462" cy="262" r="3"/><circle class="bubble b2" cx="468" cy="272" r="2"/><circle class="bubble b3" cx="404" cy="256" r="2.5"/>
+              </g>
+            </g>
+            <g class="waves-front"><path class="sea1" d="M-40 208 q20 8 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 V320 H-40Z"/><path class="line" d="M-40 208 q20 8 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0"/><path class="line l2" d="M-40 228 q20 -8 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0"/></g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta" aria-labelledby="cta-h">
+      <div class="wrap">
+        <h2 id="cta-h">Ready to tidy up?</h2>
+        <p class="muted">Try it on a test folder first. Free during the beta.</p>
+        <div class="buttons">
+          <a class="button" href="https://apps.microsoft.com/detail/9p5314gfs8s6">Get it from Microsoft Store</a>
+          <a class="button alt" href="https://github.com/AuZzii-Xssistant/Deckhand/releases/latest/download/Deckhand.exe">Download portable EXE</a>
+        </div>
+      </div>
     </section>
   </main>
-  <dialog id="screenshot-viewer" aria-labelledby="screenshot-title">
-    <div class="viewer-heading">
-      <h2 id="screenshot-title"></h2>
-      <form method="dialog"><button type="submit" autofocus>Close</button></form>
+  <footer class="bottom">
+    <div class="wrap">
+      <p>Deckhand · Free for personal and commercial use · Beta</p>
+      <a href="docs/index.html">Docs</a>
+      <a href="https://github.com/AuZzii-Xssistant/Deckhand/blob/main/LICENSE">Licence</a>
+      <a href="privacy.html">Privacy policy</a>
+      <a href="https://github.com/AuZzii-Xssistant/Deckhand/issues/new/choose">Feedback</a>
     </div>
-    <img alt="">
-  </dialog>
-  <footer class="wrap bottom">
-    <p>Deckhand · Free for personal and commercial use</p>
-    <a href="https://github.com/AuZzii-Xssistant/Deckhand/blob/main/LICENSE">Licence</a>
-    <a href="privacy.html">Privacy policy</a>
-    <a href="https://github.com/AuZzii-Xssistant/Deckhand/issues/new/choose">Feedback</a>
   </footer>
 </body>
 </html>

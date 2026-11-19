@@ -19,6 +19,14 @@ The client can check aggregate scan and run totals using the request ID. File-le
 
 When you enable profile access, the client may read eligible rule definitions, including folder paths. Your client may share those details with its model provider. See the [privacy policy](https://auzzii-xssistant.github.io/Deckhand/privacy.html).
 
+## Names are not unique
+
+Deckhand lets two rules or presets share a name, so a client must not identify an existing rule by name alone. The rule list returns each rule's id, group, watched folders and how many rules have the same name. The client should pass the id in later requests and, when several rules share a name, ask you which one you mean. The command line follows the same rule: a name that matches several rules exits with code 6 and lists the candidates with their ids.
+
+## Reading file contents
+
+A draft that tests the text of a file uses the File contents condition (`contents`). Its options are `contents: { "ocr": true, "columns": false }`: read pictures and scanned PDFs with Windows OCR (on by default), and read a PDF column by column. OCR is an option of each condition, not a switch on the rule or in Settings.
+
 ## Use the guides without MCP
 
 Open **Help → Author rules with AI…** to copy the references to your chosen AI tool. Ask it for a Deckhand JSON draft, then use **Rules → Import** to validate and review it.

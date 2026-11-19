@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>History and the Log · Deckhand documentation</title>
+<meta name="description" content="Review what each run did, undo it, and search every action on every file.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="../deckhand-mark.svg" type="image/svg+xml">
+<script src="theme-init.js"></script>
+<link rel="stylesheet" href="docs.css">
+<link rel="stylesheet" href="../viewer.css">
+<script src="../viewer.js" defer></script>
+<script src="search-index.js" defer></script>
+<script src="docs.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<header class="topbar">
+  <button class="menu-btn" type="button" aria-label="Open navigation menu" aria-controls="sidebar" aria-expanded="false"><span class="bars" aria-hidden="true"></span></button>
+  <a class="brand" href="../index.html" title="Deckhand home"><img src="../deckhand-mark.svg" alt="" width="28" height="28"><span class="brand-name">Deckhand</span></a><a class="brand-docs" href="index.html" aria-label="Documentation home">Docs</a>
+  <div class="search" role="search">
+    <label class="visually-hidden" for="search-input">Search the documentation</label>
+    <span class="search-icon"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m12.5 12.5 4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+    <input id="search-input" type="search" placeholder="Search docs" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false" aria-controls="search-results" aria-autocomplete="list">
+    <kbd class="search-hint" aria-hidden="true">/</kbd>
+    <ul id="search-results" class="search-results" role="listbox" aria-label="Search results" hidden></ul>
+  </div>
+  <nav class="top-links" aria-label="Site">
+    <a class="navpill navpill-back" href="../index.html"><span class="long">Back to main site</span><span class="short">Main site</span></a>
+    <a class="navpill navpill-gh" href="https://github.com/AuZzii-Xssistant/Deckhand" rel="noopener">GitHub<span class="sr-only"> (opens on GitHub)</span></a>
+  </nav>
+  <button class="theme-btn" type="button" aria-label="Switch colour theme" title="Switch colour theme"><span>Light</span></button>
+</header>
+<div class="shell">
+  <nav id="sidebar" class="sidebar" aria-label="Documentation"><div class="nav-group"><h2 class="nav-title">Getting started</h2><ul><li><a href="index.html">Overview</a></li><li><a href="install.html">Install</a></li><li><a href="first-rule.html">Your first rule</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Concepts</h2><ul><li><a href="rules-and-watching.html">Rules, folders and watching</a></li><li><a href="conditions-and-exclusions.html">Conditions and exclusions</a></li><li><a href="actions-and-conflicts.html">Actions and conflicts</a></li><li><a href="presets.html">Presets</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Guides</h2><ul><li><a href="editors.html">Guided and Full editor</a></li><li><a href="preview-run-undo.html">Preview, Run and Undo</a></li><li><a href="simulate.html">Simulate</a></li><li><a href="history-and-log.html" aria-current="page">History and the Log</a></li><li><a href="diagnostics.html">Diagnostics</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Reference</h2><ul><li><a href="conditions-reference.html">Conditions reference</a></li><li><a href="actions-reference.html">Actions reference</a></li><li><a href="variables-and-transforms.html">Variables and transforms</a></li><li><a href="settings.html">Settings</a></li><li><a href="keyboard-shortcuts.html">Keyboard shortcuts</a></li><li><a href="command-line.html">Command line</a></li></ul></div><div class="nav-group"><h2 class="nav-title">AI and automation</h2><ul><li><a href="ai-authoring.html">Writing rules with an AI assistant</a></li><li><a href="mcp.html">Connect an AI client (MCP)</a></li><li><a href="mcp-setup.html">Set up an AI client</a></li><li><a href="mcp-tools.html">MCP tools reference</a></li><li><a href="mcp-safety.html">MCP safety and privacy</a></li><li><a href="mcp-troubleshooting.html">MCP troubleshooting and FAQ</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Help</h2><ul><li><a href="troubleshooting.html">Troubleshooting and FAQ</a></li><li><a href="privacy.html">Privacy</a></li></ul></div><div class="nav-group side-links"><ul><li><a href="../index.html">← Back to main site</a></li><li><a href="https://github.com/AuZzii-Xssistant/Deckhand" rel="noopener">GitHub ↗</a></li></ul></div></nav>
+  <div class="scrim" hidden></div>
+  <main id="content" class="content" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Docs</a></li><li>Guides</li><li aria-current="page">History and the Log</li></ol></nav>
+    <details class="toc-mobile"><summary>On this page</summary><ul><li class="l2"><a href="#runs">Runs</a></li><li class="l2"><a href="#log">Log</a></li><li class="l2"><a href="#home-counters">Home counters</a></li><li class="l2"><a href="#history-size">History size</a></li></ul></details>
+    <article class="doc">
+<h1>History and the Log</h1>
+<p class="lede">Review what each run did, undo it, and search every action on every file.</p>
+<p><strong>History</strong> has two views of the same activity: <strong>Runs</strong> and the <strong>Log</strong>.</p>
+<h2 id="runs">Runs<a class="hlink" href="#runs" aria-label="Copy link to Runs"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<p>Every run is listed with its result. The screenshot shows the <strong>Runs</strong> tab with a search box and filters on top, then one row per run: when it started, the rule, its folders and the result, with <strong>Details</strong> and a <strong>...</strong> menu on each row.</p>
+<figure><a href="../screenshots/history/history-runs.png"><img src="../screenshots/history/history-runs.png" alt="The Runs tab of History: a row per run with the time, rule, folders and result, a Details button and a menu" loading="lazy" width="1440" height="900"></a><figcaption>The Runs tab of History: a row per run with the time, rule, folders and result, a Details button and a menu</figcaption></figure>
+<ul><li>Open a run to see <strong>Details</strong>: every file and step. You can undo one file from here. The screenshot is the details of the big run of <em>Screenshots: file by date</em> on 18 November: 1284 files done, each with its action (<strong>Move</strong>), the result and where it <strong>Becomes</strong>. The undo icon at the end of a row undoes that one file.</li></ul>
+<figure><a href="../screenshots/history/history-run-details.png"><img src="../screenshots/history/history-run-details.png" alt="The details window of a run: 1284 done files with status, action, result and the folder each file became, and a filter box" loading="lazy" width="1440" height="900"></a><figcaption>The details window of a run: 1284 done files with status, action, result and the folder each file became, and a filter box</figcaption></figure>
+<ul><li>The <strong>...</strong> menu on a run has <strong>Undo this run</strong> and <strong>Remove</strong>.</li><li>The <strong>Problems</strong> tab shows failed and left-alone files with the reason, and can export them to CSV.</li></ul>
+<p>Runs from rules and presets, and runs started from the command line, appear here. The command line shows as the source <code>cli</code>.</p>
+<h2 id="log">Log<a class="hlink" href="#log" aria-label="Copy link to Log"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<p>The Log lists every action on every file. Search it, and filter by result, rule, date and kind of work (moves, copies, renames, deletes, commands and so on). Large runs are searched by the backend, so the filter covers all files, not only those on screen.</p>
+<p>In the screenshot the <strong>Log</strong> tab lists the latest actions, one line per file: when, the result, the rule, the file, the action, the result details and where the file becomes. Lines of the rule <em>Scans</em> carry an <strong>OCR</strong> mark, because their text was read with OCR. The filters above the list narrow it by result, rule, kind of work and dates.</p>
+<figure><a href="../screenshots/history/history-log.png"><img src="../screenshots/history/history-log.png" alt="The Log tab: one line per action with time, result, rule, file, action, result details and becomes, OCR marks on the Scans lines, and filters above" loading="lazy" width="1440" height="900"></a><figcaption>The Log tab: one line per action with time, result, rule, file, action, result details and becomes, OCR marks on the Scans lines, and filters above</figcaption></figure>
+<h2 id="home-counters">Home counters<a class="hlink" href="#home-counters" aria-label="Copy link to Home counters"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<p>The Home page counts files processed and data handled. Only files an action really changed count: files that were already fine, skipped, excluded, failed or undone do not. The counters come from your History. The menu on the counters resets or restores them. Your files, History and Undo are not touched.</p>
+<h2 id="history-size">History size<a class="hlink" href="#history-size" aria-label="Copy link to History size"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<p><strong>Settings</strong> controls how much history and log Deckhand keeps. History and logs can contain file names, paths, destinations and error messages. See the <a href="../privacy.html">privacy policy</a>.</p>
+    </article>
+    <nav class="pager" aria-label="Previous and next pages">
+      <a class="prev" href="simulate.html" rel="prev"><span>Previous</span><strong>Simulate</strong></a>
+      <a class="next" href="diagnostics.html" rel="next"><span>Next</span><strong>Diagnostics</strong></a>
+    </nav>
+    <footer class="doc-foot"><p>Deckhand is in beta. Found something unclear or wrong? <a href="https://github.com/AuZzii-Xssistant/Deckhand/issues/new/choose">Tell us</a>. · <a href="../privacy.html">Privacy policy</a></p></footer>
+  </main>
+  <aside class="toc" aria-label="On this page"><h2 class="toc-title">On this page</h2><ul><li class="l2"><a href="#runs">Runs</a></li><li class="l2"><a href="#log">Log</a></li><li class="l2"><a href="#home-counters">Home counters</a></li><li class="l2"><a href="#history-size">History size</a></li></ul></aside>
+</div>
+</body>
+</html>

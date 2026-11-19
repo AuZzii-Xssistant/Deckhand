@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guided and Full editor · Deckhand documentation</title>
+<meta name="description" content="Two ways to build the same rule, and where Juggle now fits.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="../deckhand-mark.svg" type="image/svg+xml">
+<script src="theme-init.js"></script>
+<link rel="stylesheet" href="docs.css">
+<link rel="stylesheet" href="../viewer.css">
+<script src="../viewer.js" defer></script>
+<script src="search-index.js" defer></script>
+<script src="docs.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<header class="topbar">
+  <button class="menu-btn" type="button" aria-label="Open navigation menu" aria-controls="sidebar" aria-expanded="false"><span class="bars" aria-hidden="true"></span></button>
+  <a class="brand" href="../index.html" title="Deckhand home"><img src="../deckhand-mark.svg" alt="" width="28" height="28"><span class="brand-name">Deckhand</span></a><a class="brand-docs" href="index.html" aria-label="Documentation home">Docs</a>
+  <div class="search" role="search">
+    <label class="visually-hidden" for="search-input">Search the documentation</label>
+    <span class="search-icon"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m12.5 12.5 4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+    <input id="search-input" type="search" placeholder="Search docs" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false" aria-controls="search-results" aria-autocomplete="list">
+    <kbd class="search-hint" aria-hidden="true">/</kbd>
+    <ul id="search-results" class="search-results" role="listbox" aria-label="Search results" hidden></ul>
+  </div>
+  <nav class="top-links" aria-label="Site">
+    <a class="navpill navpill-back" href="../index.html"><span class="long">Back to main site</span><span class="short">Main site</span></a>
+    <a class="navpill navpill-gh" href="https://github.com/AuZzii-Xssistant/Deckhand" rel="noopener">GitHub<span class="sr-only"> (opens on GitHub)</span></a>
+  </nav>
+  <button class="theme-btn" type="button" aria-label="Switch colour theme" title="Switch colour theme"><span>Light</span></button>
+</header>
+<div class="shell">
+  <nav id="sidebar" class="sidebar" aria-label="Documentation"><div class="nav-group"><h2 class="nav-title">Getting started</h2><ul><li><a href="index.html">Overview</a></li><li><a href="install.html">Install</a></li><li><a href="first-rule.html">Your first rule</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Concepts</h2><ul><li><a href="rules-and-watching.html">Rules, folders and watching</a></li><li><a href="conditions-and-exclusions.html">Conditions and exclusions</a></li><li><a href="actions-and-conflicts.html">Actions and conflicts</a></li><li><a href="presets.html">Presets</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Guides</h2><ul><li><a href="editors.html" aria-current="page">Guided and Full editor</a></li><li><a href="preview-run-undo.html">Preview, Run and Undo</a></li><li><a href="simulate.html">Simulate</a></li><li><a href="history-and-log.html">History and the Log</a></li><li><a href="diagnostics.html">Diagnostics</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Reference</h2><ul><li><a href="conditions-reference.html">Conditions reference</a></li><li><a href="actions-reference.html">Actions reference</a></li><li><a href="variables-and-transforms.html">Variables and transforms</a></li><li><a href="settings.html">Settings</a></li><li><a href="keyboard-shortcuts.html">Keyboard shortcuts</a></li><li><a href="command-line.html">Command line</a></li></ul></div><div class="nav-group"><h2 class="nav-title">AI and automation</h2><ul><li><a href="ai-authoring.html">Writing rules with an AI assistant</a></li><li><a href="mcp.html">Connect an AI client (MCP)</a></li><li><a href="mcp-setup.html">Set up an AI client</a></li><li><a href="mcp-tools.html">MCP tools reference</a></li><li><a href="mcp-safety.html">MCP safety and privacy</a></li><li><a href="mcp-troubleshooting.html">MCP troubleshooting and FAQ</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Help</h2><ul><li><a href="troubleshooting.html">Troubleshooting and FAQ</a></li><li><a href="privacy.html">Privacy</a></li></ul></div><div class="nav-group side-links"><ul><li><a href="../index.html">← Back to main site</a></li><li><a href="https://github.com/AuZzii-Xssistant/Deckhand" rel="noopener">GitHub ↗</a></li></ul></div></nav>
+  <div class="scrim" hidden></div>
+  <main id="content" class="content" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Docs</a></li><li>Guides</li><li aria-current="page">Guided and Full editor</li></ol></nav>
+    <details class="toc-mobile"><summary>On this page</summary><ul><li class="l2"><a href="#guided">Guided</a></li><li class="l2"><a href="#full-editor">Full editor</a></li><li class="l2"><a href="#juggle-now">Juggle now</a></li><li class="l2"><a href="#useful-steps-while-editing">Useful steps while editing</a></li><li class="l2"><a href="#selecting-several-rules">Selecting several rules</a></li></ul></details>
+    <article class="doc">
+<h1>Guided and Full editor</h1>
+<p class="lede">Two ways to build the same rule, and where Juggle now fits.</p>
+<p>Deckhand has two views of the rule editor. Both edit the same rule, and you can switch at any time. Deckhand remembers your choice.</p>
+<h2 id="guided">Guided<a class="hlink" href="#guided" aria-label="Copy link to Guided"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<p>Guided walks you through the rule one step at a time: <strong>Where and when</strong> (folders and schedule), <strong>Which files</strong> (If), <strong>What happens</strong> (Then) and <strong>Preview</strong>. It starts at the first step each time you open an editor. Use it for your first rules or when you want fewer things on screen. <a href="first-rule.html">Your first rule</a> goes through all four steps.</p>
+<p>The screenshot shows step 1 for the rule <em>Invoices to Documents</em>: the description (the rule's name), the watch folder <code>~Downloads</code> and the schedule, which is not set. The step bar at the top, with <strong>Back</strong> and <strong>Next</strong>, is how you move between steps.</p>
+<figure><a href="../screenshots/editor/guided-where.png"><img src="../screenshots/editor/guided-where.png" alt="Guided editor, step 1 Where and when, for the rule Invoices to Documents: description, watch folder and schedule" loading="lazy" width="1440" height="900"></a><figcaption>Guided editor, step 1 Where and when, for the rule Invoices to Documents: description, watch folder and schedule</figcaption></figure>
+<h2 id="full-editor">Full editor<a class="hlink" href="#full-editor" aria-label="Copy link to Full editor"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<p>The Full editor shows every section at once: Watch, If, Then, Schedule, Preview and the rule options. Use it when you know what you are building or want to jump between sections. Press <strong>Full editor</strong> or <strong>Guided</strong> at the top of the page to switch.</p>
+<p>The screenshot is the rule <em>Installers: clear out after 14 days</em> in the Full editor. Description, <strong>Watch</strong> and <strong>If</strong> are on one page, with the list of files the conditions match right now (9 of 18) under the conditions. <strong>Then</strong> and <strong>Schedule</strong> follow below when you scroll.</p>
+<figure><a href="../screenshots/editor/full-none-of-group.png"><img src="../screenshots/editor/full-none-of-group.png" alt="Full editor for the rule Installers: description, watch folder, an All-of group of conditions with a nested None-of group, and the matching files below" loading="lazy" width="1440" height="900"></a><figcaption>Full editor for the rule Installers: description, watch folder, an All-of group of conditions with a nested None-of group, and the matching files below</figcaption></figure>
+<h2 id="juggle-now">Juggle now<a class="hlink" href="#juggle-now" aria-label="Copy link to Juggle now"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<p><strong>Juggle now</strong> uses the same widgets as the rule editor for a job you do once. You pick the folders, say which files (If) and what to do (Then), then press <strong>Preview</strong>. Nothing is saved as a rule. Nothing changes until you press <strong>Run</strong>.</p>
+<p>The screenshot shows step 1 of Juggle now: the folder <code>Projects</code>, with <strong>Include subfolders</strong> ticked. The title says <em>Nothing is saved or watched</em>, and <strong>Save as rule...</strong> is in the toolbar.</p>
+<figure><a href="../screenshots/juggle/juggle-where.png"><img src="../screenshots/juggle/juggle-where.png" alt="Juggle now, step 1 Where: the Projects folder to look in, with Back and Next, and the note that nothing is saved or watched" loading="lazy" width="1440" height="900"></a><figcaption>Juggle now, step 1 Where: the Projects folder to look in, with Back and Next, and the note that nothing is saved or watched</figcaption></figure>
+<p>If the work turns out to be worth keeping, use <strong>Save as rule...</strong> or <strong>Save as preset...</strong>. Both ask for a name. If a rule (or preset) with that name already exists, the dialog says so and the button changes to <strong>Save anyway</strong>. Press it to save a second one with the same name, or change the name. Names are not unique in Deckhand, so give rules names you can tell apart. The command line and AI clients identify a rule by its id for that reason.</p>
+<figure><a href="../screenshots/juggle/save-as-rule-duplicate.png"><img src="../screenshots/juggle/save-as-rule-duplicate.png" alt="The Save as rule dialog in Juggle now, after typing Invoices to Documents: the message A rule called Invoices to Documents already exists. Save anyway? and the button Save anyway" loading="lazy" width="1440" height="900"></a><figcaption>The Save as rule dialog in Juggle now, after typing Invoices to Documents: the message A rule called Invoices to Documents already exists. Save anyway? and the button Save anyway</figcaption></figure>
+<h2 id="useful-steps-while-editing">Useful steps while editing<a class="hlink" href="#useful-steps-while-editing" aria-label="Copy link to Useful steps while editing"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<ol><li><strong>Watch</strong>: add the folder or folders. Use a portable path such as <code>~Downloads</code> if the rule should follow the Windows user.</li><li><strong>Preview</strong>: see what would happen. <strong>Test one file...</strong> inside Preview picks a single file and shows exactly what the conditions and actions would do with it, without changing it. See <a href="preview-run-undo.html">Preview, Run and Undo</a>.</li><li><strong>Save</strong>: saves the rule. The play switch is disabled while the rule has unsaved changes. If you rename a rule to a name another rule already has, Save warns once and then offers <strong>Save anyway</strong>.</li><li><strong>Switch on</strong>: starts watching (<strong>Start watching</strong>).</li></ol>
+<aside class="callout note" role="note"><p class="callout-title">Note</p><p>A running rule is paused when you start editing it, and resumes when you save or cancel. Saving clears the rule's memory of which files it has already handled, so it looks at the folder again.</p></aside>
+<h2 id="selecting-several-rules">Selecting several rules<a class="hlink" href="#selecting-several-rules" aria-label="Copy link to Selecting several rules"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<p>On the <strong>Rules</strong> page, <strong>Ctrl+click</strong> toggles a rule, <strong>Shift+click</strong> selects a range, <strong>Ctrl+A</strong> selects everything shown. With two or more selected, a bar offers Enable, Disable, Duplicate, Move to group, Export and Delete. Delete asks first and lists the rules.</p>
+<p>Rows have no row of buttons. Click a row to open it. Use the <strong>...</strong> button or right-click for everything else.</p>
+    </article>
+    <nav class="pager" aria-label="Previous and next pages">
+      <a class="prev" href="presets.html" rel="prev"><span>Previous</span><strong>Presets</strong></a>
+      <a class="next" href="preview-run-undo.html" rel="next"><span>Next</span><strong>Preview, Run and Undo</strong></a>
+    </nav>
+    <footer class="doc-foot"><p>Deckhand is in beta. Found something unclear or wrong? <a href="https://github.com/AuZzii-Xssistant/Deckhand/issues/new/choose">Tell us</a>. · <a href="../privacy.html">Privacy policy</a></p></footer>
+  </main>
+  <aside class="toc" aria-label="On this page"><h2 class="toc-title">On this page</h2><ul><li class="l2"><a href="#guided">Guided</a></li><li class="l2"><a href="#full-editor">Full editor</a></li><li class="l2"><a href="#juggle-now">Juggle now</a></li><li class="l2"><a href="#useful-steps-while-editing">Useful steps while editing</a></li><li class="l2"><a href="#selecting-several-rules">Selecting several rules</a></li></ul></aside>
+</div>
+</body>
+</html>

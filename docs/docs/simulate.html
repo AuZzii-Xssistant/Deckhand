@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulate · Deckhand documentation</title>
+<meta name="description" content="Follow an example file through your rules in order, without changing anything.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="../deckhand-mark.svg" type="image/svg+xml">
+<script src="theme-init.js"></script>
+<link rel="stylesheet" href="docs.css">
+<link rel="stylesheet" href="../viewer.css">
+<script src="../viewer.js" defer></script>
+<script src="search-index.js" defer></script>
+<script src="docs.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<header class="topbar">
+  <button class="menu-btn" type="button" aria-label="Open navigation menu" aria-controls="sidebar" aria-expanded="false"><span class="bars" aria-hidden="true"></span></button>
+  <a class="brand" href="../index.html" title="Deckhand home"><img src="../deckhand-mark.svg" alt="" width="28" height="28"><span class="brand-name">Deckhand</span></a><a class="brand-docs" href="index.html" aria-label="Documentation home">Docs</a>
+  <div class="search" role="search">
+    <label class="visually-hidden" for="search-input">Search the documentation</label>
+    <span class="search-icon"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m12.5 12.5 4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+    <input id="search-input" type="search" placeholder="Search docs" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false" aria-controls="search-results" aria-autocomplete="list">
+    <kbd class="search-hint" aria-hidden="true">/</kbd>
+    <ul id="search-results" class="search-results" role="listbox" aria-label="Search results" hidden></ul>
+  </div>
+  <nav class="top-links" aria-label="Site">
+    <a class="navpill navpill-back" href="../index.html"><span class="long">Back to main site</span><span class="short">Main site</span></a>
+    <a class="navpill navpill-gh" href="https://github.com/AuZzii-Xssistant/Deckhand" rel="noopener">GitHub<span class="sr-only"> (opens on GitHub)</span></a>
+  </nav>
+  <button class="theme-btn" type="button" aria-label="Switch colour theme" title="Switch colour theme"><span>Light</span></button>
+</header>
+<div class="shell">
+  <nav id="sidebar" class="sidebar" aria-label="Documentation"><div class="nav-group"><h2 class="nav-title">Getting started</h2><ul><li><a href="index.html">Overview</a></li><li><a href="install.html">Install</a></li><li><a href="first-rule.html">Your first rule</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Concepts</h2><ul><li><a href="rules-and-watching.html">Rules, folders and watching</a></li><li><a href="conditions-and-exclusions.html">Conditions and exclusions</a></li><li><a href="actions-and-conflicts.html">Actions and conflicts</a></li><li><a href="presets.html">Presets</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Guides</h2><ul><li><a href="editors.html">Guided and Full editor</a></li><li><a href="preview-run-undo.html">Preview, Run and Undo</a></li><li><a href="simulate.html" aria-current="page">Simulate</a></li><li><a href="history-and-log.html">History and the Log</a></li><li><a href="diagnostics.html">Diagnostics</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Reference</h2><ul><li><a href="conditions-reference.html">Conditions reference</a></li><li><a href="actions-reference.html">Actions reference</a></li><li><a href="variables-and-transforms.html">Variables and transforms</a></li><li><a href="settings.html">Settings</a></li><li><a href="keyboard-shortcuts.html">Keyboard shortcuts</a></li><li><a href="command-line.html">Command line</a></li></ul></div><div class="nav-group"><h2 class="nav-title">AI and automation</h2><ul><li><a href="ai-authoring.html">Writing rules with an AI assistant</a></li><li><a href="mcp.html">Connect an AI client (MCP)</a></li><li><a href="mcp-setup.html">Set up an AI client</a></li><li><a href="mcp-tools.html">MCP tools reference</a></li><li><a href="mcp-safety.html">MCP safety and privacy</a></li><li><a href="mcp-troubleshooting.html">MCP troubleshooting and FAQ</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Help</h2><ul><li><a href="troubleshooting.html">Troubleshooting and FAQ</a></li><li><a href="privacy.html">Privacy</a></li></ul></div><div class="nav-group side-links"><ul><li><a href="../index.html">← Back to main site</a></li><li><a href="https://github.com/AuZzii-Xssistant/Deckhand" rel="noopener">GitHub ↗</a></li></ul></div></nav>
+  <div class="scrim" hidden></div>
+  <main id="content" class="content" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Docs</a></li><li>Guides</li><li aria-current="page">Simulate</li></ol></nav>
+    <details class="toc-mobile"><summary>On this page</summary><ul><li class="l2"><a href="#use-a-made-up-file-when-rules-are-switched-on">Use a made-up file when rules are switched on</a></li><li class="l2"><a href="#what-a-made-up-file-cannot-show">What a made-up file cannot show</a></li><li class="l2"><a href="#try-a-file-name">Try a file name</a></li><li class="l2"><a href="#edit-without-risk">Edit without risk</a></li><li class="l2"><a href="#simulate-test-one-file-or-preview">Simulate, Test one file or Preview?</a></li></ul></details>
+    <article class="doc">
+<h1>Simulate</h1>
+<p class="lede">Follow an example file through your rules in order, without changing anything.</p>
+<p><strong>Simulate</strong> answers &quot;what would my rules do to a file like this?&quot; It follows an example file through your rules, in order, and shows what each rule decides. Simulate itself never changes a real file.</p>
+<h2 id="use-a-made-up-file-when-rules-are-switched-on">Use a made-up file when rules are switched on<a class="hlink" href="#use-a-made-up-file-when-rules-are-switched-on" aria-label="Copy link to Use a made-up file when rules are switched on"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<p>Simulate does not stop your live rules. If you point it at a real file that sits in a folder a rule is watching, and that rule is switched on, the rule may move, rename or delete the file while you look at it, and the result you read will not match what you see on disk.</p>
+<ul><li><strong>Rules are on and watching:</strong> use a made-up path such as <code>C:\Users\You\Downloads\Steam.exe</code>. It does not have to exist.</li><li><strong>Want to test with a real file:</strong> switch the rules off first, or copy the file to a folder no rule watches, and turn rules on inside Simulate only. Changes there stay in the simulation.</li></ul>
+<h2 id="what-a-made-up-file-cannot-show">What a made-up file cannot show<a class="hlink" href="#what-a-made-up-file-cannot-show" aria-label="Copy link to What a made-up file cannot show"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<p>A path that does not exist has no contents and no embedded details, so Simulate cannot tell what depends on them: file contents, checksums, and PDF, audio or image details. It reports those as &quot;needs more information&quot; instead of guessing. Use a real file for those, with the live rules off.</p>
+<h2 id="try-a-file-name">Try a file name<a class="hlink" href="#try-a-file-name" aria-label="Copy link to Try a file name"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<ol><li>Open <strong>Simulate</strong>.</li><li>Enter the path of an example file. It does not have to exist. You can also give a size and created and modified dates.</li><li>If the file does exist, you can use the real file's facts.</li><li>Read the report: each rule, whether the file matched, and where the file ends up after each step.</li></ol>
+<p>The first screenshot uses the made-up path <code>C:\Users\ScriptKiddyMonkey\Downloads\VSCodeSetup-x64-1.9.exe</code>. The left side lists the rules in run order with the ones that are ticked. Switched-off rules are struck through and have no number. On the right, <strong>What would happen</strong> follows the file down the list: rule 1, <em>Installers: clear out after 14 days</em>, is marked <strong>Matched</strong>, shows each of its conditions with the result, and ends with the action it would run (<strong>Recycle</strong>, send to the Recycle Bin). Rule 2 and the later rules show <strong>No match</strong>.</p>
+<figure><a href="../screenshots/simulate/simulate-result.png"><img src="../screenshots/simulate/simulate-result.png" alt="Simulate with the path of an installer: rule 1, Installers, is Matched and its conditions and Recycle action are listed; rule 2, Archives, is No match" loading="lazy" width="1440" height="900"></a><figcaption>Simulate with the path of an installer: rule 1, Installers, is Matched and its conditions and Recycle action are listed; rule 2, Archives, is No match</figcaption></figure>
+<p>A different name matches a different rule. In the second screenshot the path is <code>C:\Users\ScriptKiddyMonkey\Pictures\Screenshots\NewScreenshot 2026-11-19 093412.png</code>. Rule 1 now says <strong>No match</strong>, because the extension is not exe, msi or msix. Rule 7, <em>Screenshots: file by date</em>, is <strong>Matched</strong>.</p>
+<figure><a href="../screenshots/simulate/simulate-screenshot.png"><img src="../screenshots/simulate/simulate-screenshot.png" alt="Simulate with a screenshot file name: Installers is No match, and rule 7, Screenshots: file by date, is Matched" loading="lazy" width="1440" height="900"></a><figcaption>Simulate with a screenshot file name: Installers is No match, and rule 7, Screenshots: file by date, is Matched</figcaption></figure>
+<p>Because rules run top to bottom and a later rule sees the file where an earlier one left it, Simulate is the quickest way to find rules that fight over the same files.</p>
+<h2 id="edit-without-risk">Edit without risk<a class="hlink" href="#edit-without-risk" aria-label="Copy link to Edit without risk"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<p>Edits, ticks and ordering in Simulate belong to the simulation only. Reorder rules, switch some off, or change a condition to see the effect. Your saved rules are not changed.</p>
+<h2 id="simulate-test-one-file-or-preview">Simulate, Test one file or Preview?<a class="hlink" href="#simulate-test-one-file-or-preview" aria-label="Copy link to Simulate, Test one file or Preview?"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<div class="table-wrap" role="region" tabindex="0" aria-label="Use table"><table><thead><tr><th scope="col">Use</th><th scope="col">To</th></tr></thead><tbody><tr><td><strong>Test one file...</strong> (in a rule's Preview)</td><td>Pick one real file and see what one rule's conditions and actions would do with it.</td></tr><tr><td><strong>Simulate</strong></td><td>See what a set of rules does to a file when they run in order.</td></tr><tr><td><strong>Preview</strong></td><td>See what a rule will really do to the files in its folder.</td></tr></tbody></table></div>
+<p>Simulate stands in for a real folder. When you need to know what will happen to actual files, use <a href="preview-run-undo.html">Preview</a>.</p>
+    </article>
+    <nav class="pager" aria-label="Previous and next pages">
+      <a class="prev" href="preview-run-undo.html" rel="prev"><span>Previous</span><strong>Preview, Run and Undo</strong></a>
+      <a class="next" href="history-and-log.html" rel="next"><span>Next</span><strong>History and the Log</strong></a>
+    </nav>
+    <footer class="doc-foot"><p>Deckhand is in beta. Found something unclear or wrong? <a href="https://github.com/AuZzii-Xssistant/Deckhand/issues/new/choose">Tell us</a>. · <a href="../privacy.html">Privacy policy</a></p></footer>
+  </main>
+  <aside class="toc" aria-label="On this page"><h2 class="toc-title">On this page</h2><ul><li class="l2"><a href="#use-a-made-up-file-when-rules-are-switched-on">Use a made-up file when rules are switched on</a></li><li class="l2"><a href="#what-a-made-up-file-cannot-show">What a made-up file cannot show</a></li><li class="l2"><a href="#try-a-file-name">Try a file name</a></li><li class="l2"><a href="#edit-without-risk">Edit without risk</a></li><li class="l2"><a href="#simulate-test-one-file-or-preview">Simulate, Test one file or Preview?</a></li></ul></aside>
+</div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Writing rules with an AI assistant · Deckhand documentation</title>
+<meta name="description" content="Have an AI tool draft a rule as JSON, then validate, review and import it in Deckhand.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="../deckhand-mark.svg" type="image/svg+xml">
+<script src="theme-init.js"></script>
+<link rel="stylesheet" href="docs.css">
+<link rel="stylesheet" href="../viewer.css">
+<script src="../viewer.js" defer></script>
+<script src="search-index.js" defer></script>
+<script src="docs.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<header class="topbar">
+  <button class="menu-btn" type="button" aria-label="Open navigation menu" aria-controls="sidebar" aria-expanded="false"><span class="bars" aria-hidden="true"></span></button>
+  <a class="brand" href="../index.html" title="Deckhand home"><img src="../deckhand-mark.svg" alt="" width="28" height="28"><span class="brand-name">Deckhand</span></a><a class="brand-docs" href="index.html" aria-label="Documentation home">Docs</a>
+  <div class="search" role="search">
+    <label class="visually-hidden" for="search-input">Search the documentation</label>
+    <span class="search-icon"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m12.5 12.5 4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+    <input id="search-input" type="search" placeholder="Search docs" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false" aria-controls="search-results" aria-autocomplete="list">
+    <kbd class="search-hint" aria-hidden="true">/</kbd>
+    <ul id="search-results" class="search-results" role="listbox" aria-label="Search results" hidden></ul>
+  </div>
+  <nav class="top-links" aria-label="Site">
+    <a class="navpill navpill-back" href="../index.html"><span class="long">Back to main site</span><span class="short">Main site</span></a>
+    <a class="navpill navpill-gh" href="https://github.com/AuZzii-Xssistant/Deckhand" rel="noopener">GitHub<span class="sr-only"> (opens on GitHub)</span></a>
+  </nav>
+  <button class="theme-btn" type="button" aria-label="Switch colour theme" title="Switch colour theme"><span>Light</span></button>
+</header>
+<div class="shell">
+  <nav id="sidebar" class="sidebar" aria-label="Documentation"><div class="nav-group"><h2 class="nav-title">Getting started</h2><ul><li><a href="index.html">Overview</a></li><li><a href="install.html">Install</a></li><li><a href="first-rule.html">Your first rule</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Concepts</h2><ul><li><a href="rules-and-watching.html">Rules, folders and watching</a></li><li><a href="conditions-and-exclusions.html">Conditions and exclusions</a></li><li><a href="actions-and-conflicts.html">Actions and conflicts</a></li><li><a href="presets.html">Presets</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Guides</h2><ul><li><a href="editors.html">Guided and Full editor</a></li><li><a href="preview-run-undo.html">Preview, Run and Undo</a></li><li><a href="simulate.html">Simulate</a></li><li><a href="history-and-log.html">History and the Log</a></li><li><a href="diagnostics.html">Diagnostics</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Reference</h2><ul><li><a href="conditions-reference.html">Conditions reference</a></li><li><a href="actions-reference.html">Actions reference</a></li><li><a href="variables-and-transforms.html">Variables and transforms</a></li><li><a href="settings.html">Settings</a></li><li><a href="keyboard-shortcuts.html">Keyboard shortcuts</a></li><li><a href="command-line.html">Command line</a></li></ul></div><div class="nav-group"><h2 class="nav-title">AI and automation</h2><ul><li><a href="ai-authoring.html" aria-current="page">Writing rules with an AI assistant</a></li><li><a href="mcp.html">Connect an AI client (MCP)</a></li><li><a href="mcp-setup.html">Set up an AI client</a></li><li><a href="mcp-tools.html">MCP tools reference</a></li><li><a href="mcp-safety.html">MCP safety and privacy</a></li><li><a href="mcp-troubleshooting.html">MCP troubleshooting and FAQ</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Help</h2><ul><li><a href="troubleshooting.html">Troubleshooting and FAQ</a></li><li><a href="privacy.html">Privacy</a></li></ul></div><div class="nav-group side-links"><ul><li><a href="../index.html">← Back to main site</a></li><li><a href="https://github.com/AuZzii-Xssistant/Deckhand" rel="noopener">GitHub ↗</a></li></ul></div></nav>
+  <div class="scrim" hidden></div>
+  <main id="content" class="content" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Docs</a></li><li>AI and automation</li><li aria-current="page">Writing rules with an AI assistant</li></ol></nav>
+    <details class="toc-mobile"><summary>On this page</summary><ul><li class="l2"><a href="#how-it-works">How it works</a></li><li class="l2"><a href="#what-the-assistant-needs">What the assistant needs</a></li><li class="l2"><a href="#the-shape-of-a-draft">The shape of a draft</a></li><li class="l2"><a href="#reading-the-text-of-files">Reading the text of files</a></li><li class="l2"><a href="#names-are-not-unique">Names are not unique</a></li><li class="l2"><a href="#safe-habits-for-drafts">Safe habits for drafts</a></li><li class="l2"><a href="#checking-from-the-command-line">Checking from the command line</a></li><li class="l2"><a href="#limits">Limits</a></li></ul></details>
+    <article class="doc">
+<h1>Writing rules with an AI assistant</h1>
+<p class="lede">Have an AI tool draft a rule as JSON, then validate, review and import it in Deckhand.</p>
+<p>An AI assistant can draft rules for you. It writes a JSON file. You import it, Deckhand checks it, and you review it before anything runs. The assistant never needs access to your files.</p>
+<p><strong>Help → Author rules with AI...</strong> and <strong>Help → Connect an AI client...</strong> are on the Help page, and the same setup is in the <strong>AI integrations</strong> card of Settings, as in the screenshot.</p>
+<figure><a href="../screenshots/settings/settings-ai-mcp.png"><img src="../screenshots/settings/settings-ai-mcp.png" alt="Settings: the AI integrations card with Connect an AI client and View AI reference, and the Command line card below it" loading="lazy" width="1440" height="900"></a><figcaption>Settings: the AI integrations card with Connect an AI client and View AI reference, and the Command line card below it</figcaption></figure>
+<h2 id="how-it-works">How it works<a class="hlink" href="#how-it-works" aria-label="Copy link to How it works"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<ol><li>In Deckhand, open <strong>Help → Author rules with AI...</strong>. It copies the reference material for your chosen AI tool.</li><li>Describe what you want. A good assistant asks for the full Windows paths it needs before drafting, such as <code>C:\Finance\Drop</code> or a network path like <code>\\server\share\Invoices</code>.</li><li>Save the JSON the assistant gives you to a file.</li><li>In Deckhand, open <strong>Rules → Import</strong> and select the file. Deckhand validates it before showing <strong>Import</strong>.</li><li>If there are errors, use <strong>Copy issues</strong>, give them to the assistant, and import the revised draft.</li><li>Review the imported rule. <strong>Rules arrive disabled.</strong> Preview on a real folder before you switch one on.</li></ol>
+<aside class="callout tip" role="note"><p class="callout-title">Tip</p><p>Tell the assistant to use <strong>log</strong>-only actions first for anything risky, and to prefer Recycle over Delete.</p></aside>
+<h2 id="what-the-assistant-needs">What the assistant needs<a class="hlink" href="#what-the-assistant-needs" aria-label="Copy link to What the assistant needs"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<p>Give your assistant these references:</p>
+<ul><li><a href="https://github.com/AuZzii-Xssistant/Deckhand/blob/main/docs/AI-AUTHORING.md" rel="noopener">The authoring guide</a>, a compact description of every field a draft may use.</li><li><a href="https://github.com/AuZzii-Xssistant/Deckhand/blob/main/docs/AI-AUTHORING-EXAMPLES.md" rel="noopener">Worked examples</a>, complete drafts that pass validation.</li><li>The <a href="../deckhand-draft.schema.json">draft JSON schema</a>.</li></ul>
+<h2 id="the-shape-of-a-draft">The shape of a draft<a class="hlink" href="#the-shape-of-a-draft" aria-label="Copy link to The shape of a draft"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<p>A draft is a JSON object with <code>deckhand_export</code> set to <code>1</code> and optional lists of rules, presets, variables and scripts. A minimal example:</p>
+<div class="code"><pre tabindex="0"><code class="lang-json">{
+  &quot;deckhand_export&quot;: 1,
+  &quot;rules&quot;: [
+    {
+      &quot;id&quot;: &quot;pdfs&quot;,
+      &quot;name&quot;: &quot;PDFs from Downloads&quot;,
+      &quot;enabled&quot;: false,
+      &quot;folders&quot;: [{ &quot;path&quot;: &quot;C:\\Users\\Me\\Downloads&quot; }],
+      &quot;condition&quot;: { &quot;kind&quot;: &quot;file_type&quot;, &quot;types&quot;: [&quot;pdf&quot;] },
+      &quot;actions&quot;: [
+        { &quot;kind&quot;: &quot;move&quot;, &quot;dest&quot;: &quot;D:\\Documents\\PDFs&quot;, &quot;on_conflict&quot;: &quot;skip&quot; }
+      ]
+    }
+  ]
+}</code></pre></div>
+<p>Paths in JSON need doubled backslashes. Names of conditions and actions are listed in the <a href="conditions-reference.html">Conditions reference</a> and <a href="actions-reference.html">Actions reference</a>.</p>
+<h2 id="reading-the-text-of-files">Reading the text of files<a class="hlink" href="#reading-the-text-of-files" aria-label="Copy link to Reading the text of files"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<p>For tests on what is written inside a file, use one <strong>File contents</strong> condition (<code>&quot;var&quot;: &quot;contents&quot;</code>). It reads text files, PDF, Word, Excel, PowerPoint and OpenDocument files, and pictures and scanned PDFs through Windows OCR. Its options go on the condition as <code>&quot;contents&quot;: { &quot;ocr&quot;: true, &quot;columns&quot;: false }</code>: <code>ocr</code> reads images and scanned PDFs (on by default), <code>columns</code> reads a PDF column by column. Leave the object out for the defaults. There is no per-rule OCR switch any more, and <code>contents.columns</code> is only accepted from old drafts. See <a href="conditions-reference.html#file-contents">File contents</a>.</p>
+<h2 id="names-are-not-unique">Names are not unique<a class="hlink" href="#names-are-not-unique" aria-label="Copy link to Names are not unique"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<p>Two rules can have the same name. When a draft or a request refers to an existing rule or preset, use its <strong>id</strong>, not its name. If several rules share a name, ask the user which one they mean. The command line exits with code 6 for an ambiguous name and lists the candidates, see <a href="command-line.html#exit-codes">Command line</a>.</p>
+<h2 id="safe-habits-for-drafts">Safe habits for drafts<a class="hlink" href="#safe-habits-for-drafts" aria-label="Copy link to Safe habits for drafts"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<ul><li>Every rule has <code>&quot;enabled&quot;: false</code>.</li><li>Use only fields in the schema. Deckhand rejects invented ones.</li><li>Prefer <code>recycle</code> to <code>delete</code>, and <code>on_conflict</code> set to <code>skip</code> unless you asked for something else.</li><li>Keep scripts minimal. Do not give a script credentials or network access unless you really want that.</li><li>Read the assistant's list of assumptions before importing.</li></ul>
+<h2 id="checking-from-the-command-line">Checking from the command line<a class="hlink" href="#checking-from-the-command-line" aria-label="Copy link to Checking from the command line"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<p>AI tools that can run commands may validate a draft without importing it:</p>
+<div class="code"><pre tabindex="0"><code class="lang-powershell">Deckhand.exe --validate-draft draft.json</code></pre></div>
+<p>See <a href="command-line.html">Command line</a>.</p>
+<h2 id="limits">Limits<a class="hlink" href="#limits" aria-label="Copy link to Limits"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<p>Deckhand rules react to file changes, rescans and schedules. They have no loops, no counters that persist between runs, and no &quot;stop processing&quot; step. Anything involving the network, email or databases needs a script action.</p>
+<aside class="callout note" role="note"><p class="callout-title">Note</p><p>If you connect a client directly instead of copying JSON, see <a href="mcp.html">Connect an AI client with MCP</a>, <a href="mcp-setup.html">Set up an AI client</a> and the <a href="mcp-tools.html">Tools reference</a>.</p></aside>
+    </article>
+    <nav class="pager" aria-label="Previous and next pages">
+      <a class="prev" href="command-line.html" rel="prev"><span>Previous</span><strong>Command line</strong></a>
+      <a class="next" href="mcp.html" rel="next"><span>Next</span><strong>MCP overview</strong></a>
+    </nav>
+    <footer class="doc-foot"><p>Deckhand is in beta. Found something unclear or wrong? <a href="https://github.com/AuZzii-Xssistant/Deckhand/issues/new/choose">Tell us</a>. · <a href="../privacy.html">Privacy policy</a></p></footer>
+  </main>
+  <aside class="toc" aria-label="On this page"><h2 class="toc-title">On this page</h2><ul><li class="l2"><a href="#how-it-works">How it works</a></li><li class="l2"><a href="#what-the-assistant-needs">What the assistant needs</a></li><li class="l2"><a href="#the-shape-of-a-draft">The shape of a draft</a></li><li class="l2"><a href="#reading-the-text-of-files">Reading the text of files</a></li><li class="l2"><a href="#names-are-not-unique">Names are not unique</a></li><li class="l2"><a href="#safe-habits-for-drafts">Safe habits for drafts</a></li><li class="l2"><a href="#checking-from-the-command-line">Checking from the command line</a></li><li class="l2"><a href="#limits">Limits</a></li></ul></aside>
+</div>
+</body>
+</html>

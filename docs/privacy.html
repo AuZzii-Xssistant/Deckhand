@@ -4,29 +4,92 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Privacy Policy — Deckhand: File Organiser</title>
+  <meta name="color-scheme" content="light dark">
+  <script src="theme-init.js"></script>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="deckhand-mark.svg" type="image/svg+xml">
+  <script src="site.js" defer></script>
 </head>
 <body>
-  <header class="wrap top">
-    <a class="brand" href="./"><img src="deckhand-mark.svg" alt="" width="36" height="36">Deckhand</a>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="index.html"><img src="deckhand-mark.svg" alt="" width="36" height="36">Deckhand</a>
+      <nav id="site-nav" aria-label="Main navigation">
+        <div class="jumps" aria-label="On this page">
+          <a href="index.html#features">Features</a>
+          <a href="index.html#how">How it works</a>
+          <a href="index.html#examples">Examples</a>
+          <a href="index.html#safety">Safety</a>
+          <a href="index.html#setup">Setup</a>
+          <a href="index.html#faq">FAQ</a>
+        </div>
+        <div class="away" aria-label="Other pages">
+          <a class="navpill navpill-gallery" href="screenshots/index.html">Gallery</a>
+          <a class="navpill navpill-docs" href="docs/index.html">Docs</a>
+          <a class="navpill navpill-gh" href="https://github.com/AuZzii-Xssistant/Deckhand" rel="noopener">GitHub<span class="sr-only"> (opens on GitHub)</span></a>
+        </div>
+      </nav>
+      <button class="toggle" id="theme-toggle" type="button" aria-pressed="false"><span>Light</span></button>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span class="bars" aria-hidden="true"></span></button>
+    </div>
   </header>
-  <main class="wrap section" style="max-width: 76ch">
+  <main class="wrap prose">
     <h1>Privacy Policy</h1>
-    <p><strong>Deckhand: File Organiser</strong><br>Publisher: AuZzii-Xssistant<br>Effective date: 16 November 2026</p>
-    <h2>Files and local processing</h2>
-    <p>Deckhand accesses files and folders you select or configure in rules. Depending on your settings and rules, it may read names, paths, metadata, and file contents. Optional OCR recognises text from images or scans. Files can contain personal information. Deckhand processes this information on your device to evaluate rules, show previews, perform file actions, and record their results.</p>
-    <p>Deckhand does not require an account, send telemetry, or automatically upload your files, file contents, or activity logs to the publisher.</p>
-    <h2>Local storage and your choices</h2>
-    <p>Deckhand stores settings, rules, run history, logs, and recovery data in its data folder. History and logs can contain file names, paths, destinations, and error messages. Access to these files is governed by the permissions on your device. Anyone with sufficient access to the data folder can read them.</p>
-    <p>You can change which folders Deckhand processes, disable rules and OCR, review your activity in History and Log, and manage history retention in Settings. You can remove the local data folder after closing Deckhand. Backups and exports you save separately remain until you delete them.</p>
-    <h2>Cloud folders and scripts</h2>
-    <p>If you enable online-only downloads, Deckhand can request files through your configured sync provider, such as OneDrive. Your sync provider may also synchronise changes to files in synced folders under its own privacy policy. You can disable online-only downloads in Settings.</p>
-    <p>Commands or scripts you configure can access or transfer information according to what they do and the permissions they run with. Review scripts before enabling them. You can remove the command or script action from its rule to stop Deckhand from running it.</p>
-    <h2>Optional AI clients</h2>
-    <p>If you connect an AI client and give it library access, it can read eligible disabled rule definitions, which may contain folder paths, and check aggregate preview and run totals. Your AI client may send information it reads to its model provider under that provider’s privacy policy. You can connect without library access for authoring and validation.</p>
-    <h2>Contact</h2>
-    <p>For privacy questions, use the <a href="https://github.com/AuZzii-Xssistant/Deckhand/issues/new/choose">Deckhand support page</a>. GitHub issues are public. Remove personal file names, paths, and other sensitive information before posting.</p>
+    <p><strong>Deckhand: File Organiser</strong><br>Publisher: AuZzii-Xssistant<br>Effective date: 19 November 2026</p>
+    <p>Deckhand is a desktop app that organises files on your own computer. This policy explains what the app does with your information, what the publisher does and does not receive, and what you control. In short: <strong>your files, rules and history stay on your device, and the publisher receives none of them.</strong></p>
+
+    <h2>1. What the publisher collects</h2>
+    <p>Nothing. Deckhand has no account or sign-in, no analytics, no crash reporter and no telemetry, and it does not automatically upload your files, file contents, rules, history or logs to the publisher or to any other server. The app does not run a server and does not need an internet connection to work.</p>
+    <p>The publisher therefore holds no personal data about you from the app and cannot look up, export or delete your Deckhand data. It exists only on your device.</p>
+
+    <h2>2. Files and local processing</h2>
+    <p>Deckhand accesses the files and folders you select or configure in rules. Depending on your rules and settings it may read file names, paths, sizes and dates, embedded metadata (for example document, audio or photo details), file hashes and file contents, and it may open archives to list or extract them. Optional OCR recognises text in images and scans using the text recogniser built into Windows, on your device. Files can contain personal or sensitive information. Deckhand uses it only to evaluate rules, show previews, perform the actions you set up and record the results.</p>
+    <p>Actions you configure can move, copy, rename, compress, extract, tag or delete files, or send them to the Recycle Bin. Deckhand shows a preview before a manual run and keeps undo information where an action can be taken back. You are responsible for the rules you switch on, so try new rules on copies of your files first.</p>
+
+    <h2>3. What is stored on your device</h2>
+    <p>Deckhand stores the following in its data folder, or under the current user's account where noted:</p>
+    <ul>
+      <li>Settings, rules, presets, variables, scripts, schedules, tags and file-type lists.</li>
+      <li>Run history, the activity log, per-rule memory of files already handled, and undo and recovery data. These can contain file names, folder paths, destinations and error messages.</li>
+      <li>Optional Windows integrations that you switch on: starting with Windows, the system tray icon, and Explorer right-click menu entries. These are stored under the current user's account and are removed when you switch them off.</li>
+      <li>Temporary files while archives are extracted or scripts run.</li>
+    </ul>
+    <p>Access to these files is governed by the permissions of your Windows account and device. Anyone with sufficient access to the data folder can read them, and Deckhand does not encrypt the folder. Deckhand keeps history for the period you choose in Settings, and you can clear it there. Backups and exports you save yourself stay where you put them until you delete them.</p>
+
+    <h2>4. Network use</h2>
+    <p>Deckhand does not make network requests to send your information anywhere. It does not check for updates by itself. Links in the app, such as the project page or support links, open in your default web browser, and what that browser or website then does is covered by their own policies. Deckhand shows its screens using the Microsoft Edge WebView2 component that ships with Windows; Microsoft documents how that component works.</p>
+    <p>Network activity can still happen because of choices you make:</p>
+    <ul>
+      <li><strong>Cloud folders.</strong> If you enable online-only downloads, Deckhand asks your sync provider (for example OneDrive) to make a file available locally. Your provider may also synchronise changes to files in synced folders under its own privacy policy.</li>
+      <li><strong>Commands and scripts.</strong> A command or script you configure can do whatever it is written to do, including reading files and sending data over the network, with the permissions it runs with. Review scripts before enabling them. Remove the script action from its rule to stop Deckhand running it.</li>
+      <li><strong>Network and removable drives.</strong> Files on shared or removable drives are handled like any other files; the owner of that storage may keep logs.</li>
+    </ul>
+
+    <h2>5. Optional AI clients</h2>
+    <p>Deckhand can describe how to write rules for an AI assistant and can run a local connection that lets an AI client you choose work with Deckhand. This is off unless you set it up. A client connected for authoring and validation only sees the rule format and the drafts you give it. If you also give it library access, it can read eligible disabled rule definitions, which may contain folder paths, and it can check aggregate preview and run totals. Your AI client may send whatever it reads to its model provider under that provider's privacy policy, so connect only clients and providers you trust, and review a draft before you import it.</p>
+
+    <h2>6. How you get Deckhand</h2>
+    <p>If you install Deckhand from the Microsoft Store, Microsoft collects download, update and usage information about the Store listing under Microsoft's privacy statement. If you download the portable program from the GitHub releases page, GitHub handles the download under GitHub's privacy statement. The publisher does not receive information about who installs or runs the app, other than what those services show to publishers, such as download counts, ratings and reviews.</p>
+
+    <h2>7. Your choices and control</h2>
+    <ul>
+      <li>Choose which folders Deckhand watches, and switch rules off or delete them at any time.</li>
+      <li>Switch online-only downloads, automatic start, the tray icon and Explorer integration on or off in Settings, and turn OCR on or off per File contents condition.</li>
+      <li>Review your activity in History and the Log, set how long history is kept, and clear it.</li>
+      <li>Remove all local data by closing Deckhand and deleting its data folder, and uninstall it like any other app.</li>
+    </ul>
+
+    <h2>8. Sharing, security and children</h2>
+    <p>The publisher does not sell or share your personal information because it does not receive any from the app. Deckhand processes data locally and relies on Windows for account separation and disk protection; use Windows features such as BitLocker and a locked account if your files are sensitive. Deckhand is a general-purpose utility, is not directed at children, and does not knowingly collect information from anyone.</p>
+
+    <h2>9. Support requests and public issues</h2>
+    <p>If you contact the publisher through the project's GitHub issues, anything you post, including logs, screenshots and file names, is public and handled by GitHub. Remove personal file names, folder paths and other sensitive information before posting. Do not post passwords, keys or private documents.</p>
+
+    <h2>10. Changes to this policy</h2>
+    <p>If the way Deckhand handles information changes, for example if a feature ever needs a network service, this policy will be updated before that release and the effective date above will change. Earlier versions remain available in the project's public history.</p>
+
+    <h2>11. Contact</h2>
+    <p>For privacy questions, use the <a href="https://github.com/AuZzii-Xssistant/Deckhand/issues/new/choose">Deckhand support page</a>. GitHub issues are public, so do not include personal information.</p>
   </main>
 </body>
 </html>

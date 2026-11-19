@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Actions reference · Deckhand documentation</title>
+<meta name="description" content="Every action, its options and what Undo can reverse.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="../deckhand-mark.svg" type="image/svg+xml">
+<script src="theme-init.js"></script>
+<link rel="stylesheet" href="docs.css">
+<link rel="stylesheet" href="../viewer.css">
+<script src="../viewer.js" defer></script>
+<script src="search-index.js" defer></script>
+<script src="docs.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<header class="topbar">
+  <button class="menu-btn" type="button" aria-label="Open navigation menu" aria-controls="sidebar" aria-expanded="false"><span class="bars" aria-hidden="true"></span></button>
+  <a class="brand" href="../index.html" title="Deckhand home"><img src="../deckhand-mark.svg" alt="" width="28" height="28"><span class="brand-name">Deckhand</span></a><a class="brand-docs" href="index.html" aria-label="Documentation home">Docs</a>
+  <div class="search" role="search">
+    <label class="visually-hidden" for="search-input">Search the documentation</label>
+    <span class="search-icon"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m12.5 12.5 4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+    <input id="search-input" type="search" placeholder="Search docs" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false" aria-controls="search-results" aria-autocomplete="list">
+    <kbd class="search-hint" aria-hidden="true">/</kbd>
+    <ul id="search-results" class="search-results" role="listbox" aria-label="Search results" hidden></ul>
+  </div>
+  <nav class="top-links" aria-label="Site">
+    <a class="navpill navpill-back" href="../index.html"><span class="long">Back to main site</span><span class="short">Main site</span></a>
+    <a class="navpill navpill-gh" href="https://github.com/AuZzii-Xssistant/Deckhand" rel="noopener">GitHub<span class="sr-only"> (opens on GitHub)</span></a>
+  </nav>
+  <button class="theme-btn" type="button" aria-label="Switch colour theme" title="Switch colour theme"><span>Light</span></button>
+</header>
+<div class="shell">
+  <nav id="sidebar" class="sidebar" aria-label="Documentation"><div class="nav-group"><h2 class="nav-title">Getting started</h2><ul><li><a href="index.html">Overview</a></li><li><a href="install.html">Install</a></li><li><a href="first-rule.html">Your first rule</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Concepts</h2><ul><li><a href="rules-and-watching.html">Rules, folders and watching</a></li><li><a href="conditions-and-exclusions.html">Conditions and exclusions</a></li><li><a href="actions-and-conflicts.html">Actions and conflicts</a></li><li><a href="presets.html">Presets</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Guides</h2><ul><li><a href="editors.html">Guided and Full editor</a></li><li><a href="preview-run-undo.html">Preview, Run and Undo</a></li><li><a href="simulate.html">Simulate</a></li><li><a href="history-and-log.html">History and the Log</a></li><li><a href="diagnostics.html">Diagnostics</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Reference</h2><ul><li><a href="conditions-reference.html">Conditions reference</a></li><li><a href="actions-reference.html" aria-current="page">Actions reference</a></li><li><a href="variables-and-transforms.html">Variables and transforms</a></li><li><a href="settings.html">Settings</a></li><li><a href="keyboard-shortcuts.html">Keyboard shortcuts</a></li><li><a href="command-line.html">Command line</a></li></ul></div><div class="nav-group"><h2 class="nav-title">AI and automation</h2><ul><li><a href="ai-authoring.html">Writing rules with an AI assistant</a></li><li><a href="mcp.html">Connect an AI client (MCP)</a></li><li><a href="mcp-setup.html">Set up an AI client</a></li><li><a href="mcp-tools.html">MCP tools reference</a></li><li><a href="mcp-safety.html">MCP safety and privacy</a></li><li><a href="mcp-troubleshooting.html">MCP troubleshooting and FAQ</a></li></ul></div><div class="nav-group"><h2 class="nav-title">Help</h2><ul><li><a href="troubleshooting.html">Troubleshooting and FAQ</a></li><li><a href="privacy.html">Privacy</a></li></ul></div><div class="nav-group side-links"><ul><li><a href="../index.html">← Back to main site</a></li><li><a href="https://github.com/AuZzii-Xssistant/Deckhand" rel="noopener">GitHub ↗</a></li></ul></div></nav>
+  <div class="scrim" hidden></div>
+  <main id="content" class="content" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Docs</a></li><li>Reference</li><li aria-current="page">Actions reference</li></ol></nav>
+    <details class="toc-mobile"><summary>On this page</summary><ul><li class="l2"><a href="#files-and-folders">Files and folders</a></li><li class="l2"><a href="#archives">Archives</a></li><li class="l2"><a href="#commands-and-messages">Commands and messages</a></li><li class="l2"><a href="#name-conflicts">Name conflicts</a></li></ul></details>
+    <article class="doc">
+<h1>Actions reference</h1>
+<p class="lede">Every action, its options and what Undo can reverse.</p>
+<p>Actions run in order for each matching file. Names in <code>code</code> are the ones used in the <a href="ai-authoring.html">draft JSON format</a>.</p>
+<p>The screenshot shows the two actions of the rule <em>Release builds</em>: <strong>Run saved script</strong> (<code>run_script</code>) with the script <em>Sign release</em>, then <strong>Copy file</strong> (<code>copy</code>) to a network folder.</p>
+<figure><a href="../screenshots/editor/full-run-script-action.png"><img src="../screenshots/editor/full-run-script-action.png" alt="The Then section of Release builds: Run saved script Sign release, then Copy file to the NAS" loading="lazy" width="1440" height="900"></a><figcaption>The Then section of Release builds: Run saved script Sign release, then Copy file to the NAS</figcaption></figure>
+<h2 id="files-and-folders">Files and folders<a class="hlink" href="#files-and-folders" aria-label="Copy link to Files and folders"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<div class="table-wrap" role="region" tabindex="0" aria-label="Action table"><table><thead><tr><th scope="col">Action</th><th scope="col">Options</th><th scope="col">Undo</th></tr></thead><tbody><tr><td><code>move</code></td><td>Destination (created if needed; relative means relative to the file's folder), if the name is taken, mirror subfolders, remove empty folders, if a value is missing</td><td>Yes</td></tr><tr><td><code>copy</code></td><td>Same as move, plus <strong>later actions use the copy</strong></td><td>Yes</td></tr><tr><td><code>rename</code></td><td>New name without the extension, if taken, if a value is missing</td><td>Yes</td></tr><tr><td><code>change_ext</code></td><td>New extension</td><td>Yes (as a rename)</td></tr><tr><td><code>sort</code></td><td>Base folder (empty means the file's own folder), sort by type, extension, year, month or day</td><td>Yes</td></tr><tr><td><code>recycle</code></td><td>Remove empty folders</td><td>Yes, from the Recycle Bin</td></tr><tr><td><code>delete</code></td><td>Remove empty folders. <strong>Permanent.</strong></td><td>No</td></tr><tr><td><code>remove_empty_folder</code></td><td>Which folder (where the file started, or where it is now), and also empty parents</td><td>Yes</td></tr></tbody></table></div>
+<p>Move and copy keep the file name. Sort uses the file's modified date for year, month and day.</p>
+<h2 id="archives">Archives<a class="hlink" href="#archives" aria-label="Copy link to Archives"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<div class="table-wrap" role="region" tabindex="0" aria-label="Action table"><table><thead><tr><th scope="col">Action</th><th scope="col">Options</th><th scope="col">Notes</th></tr></thead><tbody><tr><td><code>extract</code></td><td>Destination (empty means a new folder next to the archive), delete the archive afterwards</td><td>Handles zip, 7z, rar, tar and tar.gz. Never overwrites.</td></tr><tr><td><code>zip</code></td><td>Zip file, if taken, keep structure</td><td>Adds the file to a .zip. The original stays.</td></tr></tbody></table></div>
+<p>Undo reverses zip and extract. A zip never adds itself.</p>
+<h2 id="commands-and-messages">Commands and messages<a class="hlink" href="#commands-and-messages" aria-label="Copy link to Commands and messages"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<div class="table-wrap" role="region" tabindex="0" aria-label="Action table"><table><thead><tr><th scope="col">Action</th><th scope="col">Options</th><th scope="col">Notes</th></tr></thead><tbody><tr><td><code>run</code></td><td>Command, shell (default, cmd, PowerShell, pwsh), run elevated, time-out</td><td>Stdout and stderr appear in History. Exit code 0 means done. Time-out default is 10 minutes.</td></tr><tr><td><code>run_script</code></td><td>A saved script and its arguments</td><td>Scripts are managed on the <strong>Scripts</strong> page.</td></tr><tr><td><code>log</code></td><td>Message</td><td>Writes to the log. Good for dry-running an idea.</td></tr><tr><td><code>notify</code></td><td>Message</td><td>Shows a message.</td></tr></tbody></table></div>
+<p>A saved script has a shell, a body, arguments and a time-out. The screenshot is the script <em>Sign release</em> that the rule above uses: a PowerShell script that signs the installer and writes its checksum, run with the file path as its argument and stopped after 300 seconds.</p>
+<figure><a href="../screenshots/scripts/script-editor.png"><img src="../screenshots/scripts/script-editor.png" alt="The script Sign release: PowerShell, its body that signs the installer and writes a SHA-256 file, the argument with the file path, and a 300 second time-out" loading="lazy" width="1440" height="900"></a><figcaption>The script Sign release: PowerShell, its body that signs the installer and writes a SHA-256 file, the argument with the file path, and a 300 second time-out</figcaption></figure>
+<p>Values from <code>{variables}</code> are made safe before they are inserted into a command. <strong>Run elevated</strong> needs Deckhand to be started as administrator. It never prompts. Undo does not cover what a command or script did.</p>
+<h2 id="name-conflicts">Name conflicts<a class="hlink" href="#name-conflicts" aria-label="Copy link to Name conflicts"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.5 4.3M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.3-1.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></h2>
+<div class="table-wrap" role="region" tabindex="0" aria-label="Setting table"><table><thead><tr><th scope="col">Setting</th><th scope="col">Choices</th></tr></thead><tbody><tr><td>If the name is taken (<code>on_conflict</code>)</td><td><code>rename</code> (adds <code>_2</code>, <code>_3</code>), <code>skip</code>, <code>overwrite</code> (the old file goes to the Recycle Bin)</td></tr><tr><td>If a value is missing (<code>on_missing</code>)</td><td><code>fail</code>, <code>skip</code>, <code>fallback</code></td></tr></tbody></table></div>
+<p>See <a href="actions-and-conflicts.html">Actions and conflicts</a> for the safety rules about skipped steps.</p>
+    </article>
+    <nav class="pager" aria-label="Previous and next pages">
+      <a class="prev" href="conditions-reference.html" rel="prev"><span>Previous</span><strong>Conditions reference</strong></a>
+      <a class="next" href="variables-and-transforms.html" rel="next"><span>Next</span><strong>Variables and transforms</strong></a>
+    </nav>
+    <footer class="doc-foot"><p>Deckhand is in beta. Found something unclear or wrong? <a href="https://github.com/AuZzii-Xssistant/Deckhand/issues/new/choose">Tell us</a>. · <a href="../privacy.html">Privacy policy</a></p></footer>
+  </main>
+  <aside class="toc" aria-label="On this page"><h2 class="toc-title">On this page</h2><ul><li class="l2"><a href="#files-and-folders">Files and folders</a></li><li class="l2"><a href="#archives">Archives</a></li><li class="l2"><a href="#commands-and-messages">Commands and messages</a></li><li class="l2"><a href="#name-conflicts">Name conflicts</a></li></ul></aside>
+</div>
+</body>
+</html>

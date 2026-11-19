@@ -46,7 +46,9 @@
     "c_all_files": {"type": "object", "additionalProperties": false, "required": ["kind"], "properties": {"kind": {"const": "all_files"}}},
     "c_text": {"type": "object", "additionalProperties": false, "required": ["kind", "var", "op"], "properties": {
       "kind": {"const": "text"}, "var": {"type": "string"}, "op": {"$ref": "#/$defs/text_op"}, "value": {"type": "string"},
-      "value_var": {"type": ["string", "null"]}, "case_sensitive": {"type": "boolean"}, "wildcard": {"type": "boolean"}}},
+      "value_var": {"type": ["string", "null"]}, "case_sensitive": {"type": "boolean"}, "wildcard": {"type": "boolean"},
+      "contents": {"$ref": "#/$defs/contents_opts"}}},
+    "contents_opts": {"type": "object", "additionalProperties": false, "description": "How File contents is read (only for var contents): ocr = read text from images and scanned PDFs with Windows OCR (default true), columns = read a PDF column by column (default false).", "properties": {"ocr": {"type": "boolean"}, "columns": {"type": "boolean"}}},
     "c_number": {"type": "object", "additionalProperties": false, "required": ["kind", "var", "op", "value"], "properties": {
       "kind": {"const": "number"}, "var": {"type": "string"}, "op": {"$ref": "#/$defs/num_op"}, "value": {"type": "number"}, "value2": {"type": "number"},
       "unit": {"anyOf": [{"$ref": "#/$defs/size_unit"}, {"type": "null"}]}, "raw": {"type": ["string", "null"]}, "raw2": {"type": ["string", "null"]}}},
@@ -117,7 +119,7 @@
       "modified": {"type": "boolean"}}},
 
     "uservar": {"type": "object", "additionalProperties": false, "required": ["id", "title", "def"], "properties": {
-      "id": {"type": "string"}, "title": {"type": "string"}, "source": {"type": "string"},
+      "id": {"type": "string"}, "title": {"type": "string"}, "source": {"type": "string"}, "contents": {"$ref": "#/$defs/contents_opts"},
       "occurrence": {"type": "object", "additionalProperties": false, "properties": {"number": {"type": "integer"}, "from_top": {"type": "boolean"}}},
       "def": {"$ref": "#/$defs/vardef"}}},
     "vardef": {
